@@ -5,10 +5,13 @@ using UnityEngine;
 public class BombExplode : MonoBehaviour
 {
     public int range = 1;
-    public GameObject Blast_Prefab;
+    [SerializeField] private float EXPLOSION_DELAY = 2;
+    [SerializeField] private GameObject Blast_Prefab;
+    [SerializeField] public GameObject Mother_Object; //What gameObject spawned this bomb?
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(Explode());
         
     }
 
@@ -16,6 +19,10 @@ public class BombExplode : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnEnable(){
+        //StartCoroutine(Explode());
     }
 
     void OnDestroy(){
@@ -37,12 +44,27 @@ public class BombExplode : MonoBehaviour
         }
     }
 
-    public void Explode(){
+    public IEnumerator Explode(){
+
+        // Delay
+        for(int i = 0; i  < EXPLOSION_DELAY; i++){
+            // we delay for EXPLOSION_DELAY seconds
+
+            //CHANGE_SPRITE(WHITE)
+            //REVERT_SPRITE()
+            yield return new WaitForSeconds(EXPLOSION_DELAY);
+        }
+
+
         Instantiate(Blast_Prefab, transform.position, Quaternion.identity).SetActive(true);
         ExplodeLine(UP);
         ExplodeLine(RIGHT);
         ExplodeLine(LEFT);
         ExplodeLine(DOWN);
+
+        BombSpawner BombSpawner_Component = Mother_Object.GetComponent<BombSpawner>();
+        BombSpawner_Component.StoreBomb();
+        BombSpawner_Component.SetRemove(transform.position);
         Destroy(gameObject);
     }
 }
