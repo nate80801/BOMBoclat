@@ -154,10 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxPrefab: {fileID: 8254723224989292369, guid: e0b2fafd25a9437409b7d8b1b316b43c, type: 3}
   wallPrefab: {fileID: 4012378392971015890, guid: 4dbd741785367224c9083997f2d40036, type: 3}
-  x: 20
-  y: 20
-  boxPercentage: 25
+  x: 30
+  y: 30
   ExcludeZone: 3
+  boxPercentage: 33
+  wallPercentage: 25
 --- !u!4 &473058101
 Transform:
   m_ObjectHideFlags: 0

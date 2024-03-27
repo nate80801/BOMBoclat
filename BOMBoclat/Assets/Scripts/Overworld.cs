@@ -8,21 +8,30 @@ public class Overworld : MonoBehaviour
     [SerializeField] private GameObject boxPrefab;
     [SerializeField] private GameObject wallPrefab;
 
+
     // Dimensions 
     [SerializeField] private int x;
     [SerializeField] private int y;
-    [SerializeField] private int boxPercentage;
+
+    // Spawnzone
     [SerializeField] private int ExcludeZone;
+
+
+    [SerializeField] private int boxPercentage = 33;
+    [SerializeField] private int wallPercentage = 10;
+
+    
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         SpawnBorder();
 
-        SpawnBoxes();
+
+
+        SpawnWorld();
 
         
 
@@ -59,20 +68,40 @@ public class Overworld : MonoBehaviour
         }
     }
 
-    private void SpawnBoxes(){
-        
-        for(int i = 0; i < x; i++){
 
+
+    private void SpawnWorld(){
+        // Initialize end zone somewhere in the top right of the map
+        Vector3 exit = new Vector3(Random.Range(x/2, x), Random.Range(y/2,y));
+        GameObject exit_box = Instantiate(boxPrefab, exit, Quaternion.identity);
+
+        BoxBehavior box_behavior_component = exit_box.GetComponent<BoxBehavior>();
+        box_behavior_component.InitExit();
+
+
+
+
+        for(int i = 0; i < x; i++){
             for (int j=0; j<y; j++){
+                // Make sure spawn zone is not populated
+                if(i + j <= ExcludeZone) continue;
+
+                Vector3 cur_location = new Vector3(i,j);
+                if(cur_location == exit) continue;
+
+
+                // Roll for box
                 if(Random.Range(0,100) < boxPercentage){
-                    // Make sure spawn zone is not populated
-                    if(i + j <= ExcludeZone) continue;
 
                     Instantiate(boxPrefab, new Vector3(i,j), Quaternion.identity);
+                    continue;
+                }
+                if(Random.Range(0,100) < wallPercentage){
+                    if(i % 2 == 1 && j % 2 == 1) Instantiate(wallPrefab, new Vector3(i,j), Quaternion.identity);
                 }
 
-
             }
+            
         }
     }
 }

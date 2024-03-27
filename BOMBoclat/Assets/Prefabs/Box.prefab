@@ -171,3 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c39d4e97eb5a9c49b6f5bedefe9d53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy_percentage: 15
+  powerup_percentage: 20

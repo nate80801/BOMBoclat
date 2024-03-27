@@ -36,9 +36,9 @@ public class BombExplode : MonoBehaviour
         for(int i = 1; i <= range; i++){
             Vector3 newPosition = transform.position + Direction * i;
             Instantiate(Blast_Prefab, newPosition, Quaternion.identity).SetActive(true);
-            if(Globals.boxMap.ContainsKey(newPosition)){
-                Destroy(Globals.boxMap[newPosition]);
-                Globals.boxMap.Remove(newPosition);
+            if(Globals.WorldMap.ContainsKey(newPosition)){
+                Destroy(Globals.WorldMap[newPosition]);
+                Globals.WorldMap.Remove(newPosition);
                 return;
             }
         }
