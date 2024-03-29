@@ -10,6 +10,10 @@ public class BoxBehavior : MonoBehaviour
     [SerializeField] private int enemy_percentage = 20;
     [SerializeField] private int powerup_percentage = 20;
 
+    private GameObject powerup_Prefab;
+    private GameObject exit_Prefab;
+
+
 
     private SpriteRenderer m_SpriteRenderer;
     private GameObject hidden_entity = null;
@@ -23,7 +27,7 @@ public class BoxBehavior : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         if(Random.Range(0,100) < powerup_percentage){
             m_SpriteRenderer.color = Color.green;
-            // hidden_entity = Instantiate(object, transform.position, Quaternion.identity).setActive(false);
+            //hidden_entity = Instantiate(object, transform.position, Quaternion.identity).setActive(false);
         } 
         else if(Random.Range(0,100) < enemy_percentage){
             m_SpriteRenderer.color = Color.red;
@@ -32,11 +36,22 @@ public class BoxBehavior : MonoBehaviour
         }
     }
 
+    void OnDestroy(){
+        Globals.WorldMap.Remove(transform.position);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag == "Hostile"){
+            Debug.Log("Box has entered a trigger");
+            Destroy(gameObject); // DOESNT FUCKING WORK
+        }
     }
 
     public void InitExit(){

@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class BombSpawner : MonoBehaviour
 {
-    [SerializeField] private int EXPLOSION_RANGE = 1;
-    [SerializeField] private int BOMB_COUNT_START = 1;
+    //[SerializeField] private int EXPLOSION_RANGE = 1;
     
     [SerializeField] private KeyCode ATTACK_KEY = KeyCode.Space;
 
-    private int BOMB_COUNT_CUR;
     public GameObject bomb_prefab;
 
     // Map showing where all the bombs are to make sure we don't place bombs in the same location.
@@ -18,18 +16,16 @@ public class BombSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0 ; i < BOMB_COUNT_START; i++){
-            StoreBomb();
-        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if((Input.GetKeyDown(ATTACK_KEY)) && (BOMB_COUNT_CUR > 0)) {
+        if((Input.GetKeyDown(ATTACK_KEY)) && (Globals.current_bomb_count > 0)) {
             PlaceBomb(); 
-            Debug.Log(BOMB_COUNT_CUR);
+            Debug.Log(Globals.current_bomb_count);
 
         }
 
@@ -43,7 +39,7 @@ public class BombSpawner : MonoBehaviour
 
         // Add bomb location to hashset, reduce current bomb count
         BombSet.Add(Bomb_Location);
-        BOMB_COUNT_CUR--;
+        Globals.current_bomb_count--;
 
         // Place the actual bomb
         GameObject Placed_Bomb = Instantiate(bomb_prefab, Bomb_Location, Quaternion.identity);
@@ -55,7 +51,7 @@ public class BombSpawner : MonoBehaviour
         // Change the range of the bomb
         BombExplode explosionComponent = Placed_Bomb.GetComponent<BombExplode>();
         explosionComponent.Mother_Object = gameObject;
-        explosionComponent.range = EXPLOSION_RANGE;
+        //explosionComponent.range = Globals.blast_range;
 
         Placed_Bomb.SetActive(true);
 
@@ -71,11 +67,14 @@ public class BombSpawner : MonoBehaviour
     }
 
     // Can call this from powerups
-    public void StoreBomb(){
-        BOMB_COUNT_CUR++;
-    }
+
     public void SetRemove(Vector3 pos){
         BombSet.Remove(pos);
+    }
+
+
+    public void StoreBomb(){
+        Globals.current_bomb_count++;
     }
 
 

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Controls Player Movements
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private int speed;
-
+    // Use Globals.player_speed for player speed
     private float hor_axis;
     private float vert_axis;
 
@@ -21,6 +21,6 @@ public class PlayerMovement : MonoBehaviour
         hor_axis = Input.GetAxisRaw("Horizontal");
         vert_axis = Input.GetAxisRaw("Vertical");        
 
-        transform.position += new Vector3(hor_axis, vert_axis, 0) * speed * Time.deltaTime;
+        transform.position += new Vector3(hor_axis, vert_axis, 0) * Globals.player_speed * Time.deltaTime;
     }
 }

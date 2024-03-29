@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BombExplode : MonoBehaviour
 {
-    public int range = 1;
-    [SerializeField] private float EXPLOSION_DELAY = 2;
     [SerializeField] private GameObject Blast_Prefab;
-    [SerializeField] public GameObject Mother_Object; //What gameObject spawned this bomb?
+    [SerializeField] public GameObject Mother_Object; //What gameObject spawned this bomb? Most likely player 
+
+    private bool triggered = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,7 @@ public class BombExplode : MonoBehaviour
         
     }
 
+
     void OnEnable(){
         //StartCoroutine(Explode());
     }
@@ -33,30 +34,46 @@ public class BombExplode : MonoBehaviour
     private Vector3 DOWN = new Vector3(0,-1);
     private Vector3 LEFT = new Vector3(-1,0);
     private void ExplodeLine(Vector3 Direction){
-        for(int i = 1; i <= range; i++){
-            Vector3 newPosition = transform.position + Direction * i;
-            Instantiate(Blast_Prefab, newPosition, Quaternion.identity).SetActive(true);
+        for(int i = 1; i <= Globals.blast_range; i++){
+            Vector3 newPosition = transform.position + (Direction * i);
+            GameObject blast = Instantiate(Blast_Prefab, newPosition, Quaternion.identity);
+
+           // blast.transform.SetParent(gameObject); // Set the parent of it so that all of the blast will execute ontriggerenter2d
+
+            
+            
             if(Globals.WorldMap.ContainsKey(newPosition)){
-                Destroy(Globals.WorldMap[newPosition]);
-                Globals.WorldMap.Remove(newPosition);
-                return;
+                
+                switch(Globals.WorldMap[newPosition].tag){
+                    case "Wall":
+                        return;
+                    case "Box":
+                        blast.SetActive(true);
+                        Destroy(Globals.WorldMap[newPosition]);
+                        return;
+                    
+                    
+                }
             }
+            blast.SetActive(true);
         }
     }
+
 
     public IEnumerator Explode(){
 
         // Delay
-        for(int i = 0; i  < EXPLOSION_DELAY; i++){
-            // we delay for EXPLOSION_DELAY seconds
+        for(int i = 0; i  < Globals.explosion_delay_time; i++){
+            // we delay for Globals.explosion_delay_time seconds
 
             //CHANGE_SPRITE(WHITE)
             //REVERT_SPRITE()
-            yield return new WaitForSeconds(EXPLOSION_DELAY);
+            yield return new WaitForSeconds(Globals.explosion_delay_time);
         }
 
 
         Instantiate(Blast_Prefab, transform.position, Quaternion.identity).SetActive(true);
+
         ExplodeLine(UP);
         ExplodeLine(RIGHT);
         ExplodeLine(LEFT);
@@ -65,6 +82,7 @@ public class BombExplode : MonoBehaviour
         BombSpawner BombSpawner_Component = Mother_Object.GetComponent<BombSpawner>();
         BombSpawner_Component.StoreBomb();
         BombSpawner_Component.SetRemove(transform.position);
+
         Destroy(gameObject);
     }
 }
