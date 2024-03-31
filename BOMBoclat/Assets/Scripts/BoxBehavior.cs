@@ -21,6 +21,7 @@ public class BoxBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(is_exit == true) return;
         
         Globals.WorldMap.Add(transform.position, gameObject);
 

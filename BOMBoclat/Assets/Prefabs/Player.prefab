@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60be32d0c49ca344d8a5b4afc2cee297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
 --- !u!61 &587634221810688022
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +133,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.24650176}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -145,7 +144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.5069965}
   m_EdgeRadius: 0
 --- !u!50 &3472673996640708995
 Rigidbody2D:
@@ -186,9 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566990e5dd15cb447bc217714c504d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EXPLOSION_DELAY: 3
-  EXPLOSION_RANGE: 1
-  BOMB_COUNT: 3
+  ATTACK_KEY: 32
   bomb_prefab: {fileID: 4126584094324083995, guid: 676134ac79573aa409035f8c06306664, type: 3}
 --- !u!1 &6753978760374670499
 GameObject:
