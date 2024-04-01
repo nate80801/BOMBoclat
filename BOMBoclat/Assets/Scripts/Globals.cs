@@ -18,6 +18,10 @@ public static class Globals
     public static int explosion_delay_time = 2; //Seconds it takes for a bomb to explode
     public static float blast_dissolve_time = .25f; // how long it takes for the smoke to clear from the explosion
 
+
+    public static int hidden_enemy_percent = 0;
+    public static int hidden_powerup_percentage = 5;
+
     public static string VectorToString(Vector3 vector){
         return("x: " + vector.x + ", y: " + vector.y);
     }

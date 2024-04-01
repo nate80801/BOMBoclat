@@ -25,10 +25,12 @@ public class PlayerEvents : MonoBehaviour
         if(col.gameObject.tag == "PowerUp"){
             PowerUpBehavior PowerComponent = col.gameObject.GetComponent<PowerUpBehavior>();
             PowerComponent.Activate();
+            Destroy(col.gameObject);
         }
     }
 
     void Die(){
+
         Globals.DecrementLives();
         if(Globals.player_lives == 0){
             // Game Over
@@ -41,6 +43,7 @@ public class PlayerEvents : MonoBehaviour
     }
 
     void Respawn(){
+        
         Globals.MediumReset();
         gameObject.transform.position = new Vector3(0,0); // Reset location
 

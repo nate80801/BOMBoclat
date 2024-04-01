@@ -31,6 +31,10 @@ public class BombSpawner : MonoBehaviour
 
     }
 
+    void OnTriggerExit2D(Collider2D col){
+        
+    }
+
     // Place bomb down
     private void PlaceBomb() {
 
