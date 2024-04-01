@@ -18,7 +18,7 @@ public class Overworld : MonoBehaviour
 
 
     [SerializeField] private int boxPercentage = 33;
-    [SerializeField] private int wallPercentage = 10;
+    [SerializeField] private int wallPercentage = 100;
 
     
 

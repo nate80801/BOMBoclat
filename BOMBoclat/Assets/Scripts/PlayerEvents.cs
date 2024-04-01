@@ -29,6 +29,14 @@ public class PlayerEvents : MonoBehaviour
         }
     }
 
+
+
+    void OnTriggerExit2D(Collider2D col){
+        if(col.gameObject.tag == "Bomb"){
+            col.isTrigger = false;
+        }
+    }
+
     void Die(){
 
         Globals.DecrementLives();

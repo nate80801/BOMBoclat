@@ -11,6 +11,7 @@ public class BombExplode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         StartCoroutine(Explode());
         
     }
@@ -20,6 +21,7 @@ public class BombExplode : MonoBehaviour
     {
         
     }
+
 
 
     void OnEnable(){
