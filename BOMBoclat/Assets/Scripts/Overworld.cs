@@ -5,21 +5,22 @@ using UnityEngine;
 // To use System Random instead of Unity Random
 public class Overworld : MonoBehaviour
 {
+    // Prefabs for GameObjects we referennce
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject boxPrefab;
     [SerializeField] private GameObject wallPrefab;
 
 
-    // Dimensions 
+    // Dimensions of the map, x * y grid
     [SerializeField] private int x;
     [SerializeField] private int y;
 
     // Spawnzone
-    [SerializeField] private int ExcludeZone;
+    [SerializeField] private int ExcludeZone; // Zone for spawn zone, no other entities will be spawned except for the player
 
 
-    [SerializeField] private int boxPercentage = 33;
-    [SerializeField] private int wallPercentage = 100;
+    [SerializeField] private int boxPercentage = 33; // Percent of boxes in the map
+    [SerializeField] private int wallPercentage = 100; //Percentage of walls in the map
 
     
 
@@ -39,7 +40,7 @@ public class Overworld : MonoBehaviour
         
     }
 
-    void OnDestroy(){
+    void OnDestroy(){ // When new scene is loaded, we clear out the hashmap so the next scene will start with an empty hashmap
         Globals.WorldMap.Clear();
     }
 
@@ -94,7 +95,7 @@ public class Overworld : MonoBehaviour
                 if(cur_location == exit) continue;
 
 
-                // Roll for box
+                // The randonm space has a chance to spawn in a box, a wall, or an enemy
                 if(Random.Range(0,100) < boxPercentage){
 
                     Instantiate(boxPrefab, new Vector3(i,j), Quaternion.identity);
