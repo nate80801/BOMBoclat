@@ -45,6 +45,7 @@ public class BoxBehavior : MonoBehaviour
         if(!this.gameObject.scene.isLoaded) return;
         // Instantiate objects here
         if(hidden_entity != null) Instantiate(hidden_entity, transform.position, Quaternion.identity);
+        Globals.IncreaseScore(1);
     }
 
 

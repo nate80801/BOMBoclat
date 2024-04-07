@@ -5,6 +5,7 @@ using UnityEngine;
 // To use System Random instead of Unity Random
 public class Overworld : MonoBehaviour
 {
+    [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject boxPrefab;
     [SerializeField] private GameObject wallPrefab;
 
@@ -27,20 +28,23 @@ public class Overworld : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SpawnPlayer();
         SpawnBorder();
-
-
-
         SpawnWorld();
-
-        
-
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void OnDestroy(){
+        Globals.WorldMap.Clear();
+    }
+
+    private void SpawnPlayer(){
+        Instantiate(playerPrefab, new Vector3(0,0), Quaternion.identity);
     }
 
     private void SpawnBorder(){
@@ -70,7 +74,7 @@ public class Overworld : MonoBehaviour
 
 
 
-    private void SpawnWorld(){
+    private void SpawnWorld(){ // Spawns everything inside of the border
         // Initialize end zone somewhere in the top right of the map
         Vector3 exit = new Vector3(Random.Range(x/2, x), Random.Range(y/2,y));
         GameObject exit_box = Instantiate(boxPrefab, exit, Quaternion.identity);
