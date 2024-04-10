@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: a03b9613570e0a847929f3d7498cf4e9
+guid: 6450442b72468224a8e6cc219109e480
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - boxPrefab: {instanceID: 0}
-  - wallPrefab: {instanceID: 0}
-  - slowEnemyPrefab: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

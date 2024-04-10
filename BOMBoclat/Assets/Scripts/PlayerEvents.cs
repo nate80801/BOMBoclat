@@ -29,6 +29,12 @@ public class PlayerEvents : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.tag == "Hostile") {
+            Die();
+            return;
+        }
+    }
     void Die(){
 
         Globals.DecrementLives();

@@ -28,13 +28,7 @@ public class Overworld : MonoBehaviour
     void Start()
     {
         SpawnBorder();
-
-
-
         SpawnWorld();
-
-        
-
     }
 
     // Update is called once per frame
@@ -78,9 +72,6 @@ public class Overworld : MonoBehaviour
         BoxBehavior box_behavior_component = exit_box.GetComponent<BoxBehavior>();
         box_behavior_component.InitExit();
 
-
-
-
         for(int i = 0; i < x; i++){
             for (int j=0; j<y; j++){
                 // Make sure spawn zone is not populated
@@ -96,10 +87,10 @@ public class Overworld : MonoBehaviour
                     Instantiate(boxPrefab, new Vector3(i,j), Quaternion.identity);
                     continue;
                 }
+
                 if(Random.Range(0,100) < wallPercentage){
                     if(i % 2 == 1 && j % 2 == 1) Instantiate(wallPrefab, new Vector3(i,j), Quaternion.identity);
                 }
-
             }
             
         }
