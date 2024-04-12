@@ -63,7 +63,7 @@ public static class Globals
 
     // Level stuff
     // Levle naming standards: Level 1, Level 2, etc.
-    public static int Level;
+    public static int Level = 1;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
         // Load in level 1 with initial stats
         HardReset();
@@ -75,14 +75,17 @@ public static class Globals
         Debug.Log("Next Level triggered");
         SoftReset();
         if(Level == 3){
+            Debug.Log("You win!!!!");
             // TODO: If we are on the final level, load the final level dance party    
             return;
         }
         else{
-            SceneManager.LoadScene("Level " + (++Level));
+            // Advance to next level
+            // TODO: Increase difficulty by increasing enemy count, hidden enemy probability, etc.
+            Level += 1;
+            SceneManager.LoadScene("Level " + (Level));
         }
     }
-    // Load the next scene
 
     // Used for when we clear a level, moving on to the next map
     public static void SoftReset(){
