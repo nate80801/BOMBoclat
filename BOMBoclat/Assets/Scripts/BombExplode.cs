@@ -85,12 +85,13 @@ public class BombExplode : MonoBehaviour
         ExplodeLine(LEFT);
         ExplodeLine(DOWN);
 
+        // plays bomb explosion audio
+        audioManager.PlaySFX(audioManager.Bomb_Explosion);
+
+
         BombSpawner BombSpawner_Component = Mother_Object.GetComponent<BombSpawner>();
         BombSpawner_Component.StoreBomb();
         BombSpawner_Component.SetRemove(transform.position);
-
-        // plays bomb explosion audio
-        audioManager.PlaySFX(audioManager.Bomb_Explosion);
 
         Destroy(gameObject);
     }
