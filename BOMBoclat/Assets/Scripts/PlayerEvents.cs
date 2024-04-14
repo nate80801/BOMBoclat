@@ -7,6 +7,13 @@ public class PlayerEvents : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private PlayerMovement playerMovement;
+
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +56,10 @@ public class PlayerEvents : MonoBehaviour
     }
 
     private IEnumerator Die(){ 
+
+        // plays player dying audio
+        audioManager.PlaySFX(audioManager.Player_Dying);
+
         // Make it look like the game object is destroyed by vanishing it
         // Make the player reset to spawn then make the object appear again
         Vanish();
@@ -64,8 +75,6 @@ public class PlayerEvents : MonoBehaviour
             Respawn();
             UnVanish();
         }
-
-
     }
 
     private void Vanish(){

@@ -7,6 +7,12 @@ public class PowerUpBehavior : MonoBehaviour
     private delegate void Powerup();
     private int roll;
     Powerup[] PowerArr;
+
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +30,9 @@ public class PowerUpBehavior : MonoBehaviour
 
     public void Activate(){
         PowerArr[roll]();
+
+        // plays power up audio
+        audioManager.PlaySFX(audioManager.Powerup);
     }
 
     // Update is called once per frame

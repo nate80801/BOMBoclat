@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c30b2483bf45f9e47911beef7bc72c96
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - musicSource: {instanceID: 0}
+  - SFXSource: {instanceID: 0}
+  - Main_Menu: {fileID: 8300000, guid: bdf89ad7ee8131e489a8093a4b115cb2, type: 3}
+  - Gameplay: {fileID: 8300000, guid: 96cc366edf9f1b24881764898faaef64, type: 3}
+  - Bomb_Explosion: {fileID: 8300000, guid: 47a2029a6b3714544903292c03c509f5, type: 3}
+  - Box_Breaking: {fileID: 8300000, guid: 62fb52535108d1c4d83d4ca79696eb83, type: 3}
+  - Exit_Door: {fileID: 8300000, guid: 80169924e4d4e72439529573a287db6a, type: 3}
+  - Player_Dying: {fileID: 8300000, guid: 7883bcd01e6e2d149962368012d62f34, type: 3}
+  - Powerup: {fileID: 8300000, guid: 2621c265d1248d849b36b3a029bec62d, type: 3}
+  - Victory: {fileID: 8300000, guid: e42747e6172fcba4f80663ae53d9bd65, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

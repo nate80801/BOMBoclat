@@ -14,7 +14,11 @@ public class BoxBehavior : MonoBehaviour
     [SerializeField] private GameObject exitdoor_Prefab;
     [SerializeField] private GameObject enemy_Prefab  = null;
 
-
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     private SpriteRenderer m_SpriteRenderer;
     private GameObject hidden_entity = null;
@@ -40,6 +44,11 @@ public class BoxBehavior : MonoBehaviour
     }
 
     void OnDestroy(){
+
+        // plays box breaking audio
+        //  FIX: change audio to a longer / more unique one
+        audioManager.PlaySFX(audioManager.Box_Breaking);
+
         Globals.WorldMap.Remove(transform.position);
 
         if(!this.gameObject.scene.isLoaded) return;
