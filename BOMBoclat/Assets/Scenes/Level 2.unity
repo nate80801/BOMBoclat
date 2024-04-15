@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverworldSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1947895979951126059, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: m_TagString
+      value: OverworldSpawner
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
