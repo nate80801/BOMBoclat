@@ -63,6 +63,18 @@ public static class Globals
 
     // Level stuff
     // Levle naming standards: Level 1, Level 2, etc.
+    public static GameObject AudioManagerObject; // AudioManager.cs sets itself here in Start()
+    public static void LoadScene(string sceneName){
+        // Stop SFX
+        AudioSource SFX = AudioManagerObject.transform.Find("SFX").gameObject.GetComponent<AudioSource>();
+        SFX.Stop();
+        SceneManager.LoadScene(sceneName);
+        SFX.Play();
+
+
+    }
+    
+    
     public static int Level = 1;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
         // Load in level 1 with initial stats
@@ -72,6 +84,7 @@ public static class Globals
     }
 
     public static void NextLevel(){ // Call from prev level
+
         Debug.Log("Next Level triggered");
         SoftReset();
         if(Level == 3){
