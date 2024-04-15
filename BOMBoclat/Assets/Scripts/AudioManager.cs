@@ -1,6 +1,7 @@
+// PUT THIS OBJECT AT THE MAIN MENU SCENE
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour 
 {
     [Header("-----------Audio Source-----------")]
     [SerializeField] AudioSource musicSource;
@@ -22,7 +23,9 @@ public class AudioManager : MonoBehaviour
     // starts automatically
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         // FIX: make sure audio loops
+
         musicSource.clip = Gameplay; 
         musicSource.Play();  
     }
@@ -31,4 +34,6 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.PlayOneShot(clip);
     }
+
+
 }

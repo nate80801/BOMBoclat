@@ -7,13 +7,13 @@ public class PlayerEvents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D col){
@@ -26,6 +26,23 @@ public class PlayerEvents : MonoBehaviour
             PowerUpBehavior PowerComponent = col.gameObject.GetComponent<PowerUpBehavior>();
             PowerComponent.Activate();
             Destroy(col.gameObject);
+
+            Globals.IncreaseScore(3);
+        }
+        else if(col.gameObject.tag == "ExitDoor"){
+            audioManager.PlaySFX(audioManager.Exit_Door);
+            Globals.NextLevel();
+        }
+
+
+
+    }
+
+
+
+    void OnTriggerExit2D(Collider2D col){ // To fix bomb collisions w player
+        if(col.gameObject.tag == "Bomb"){
+            col.isTrigger = false;
         }
     }
 
@@ -49,10 +66,10 @@ public class PlayerEvents : MonoBehaviour
     }
 
     void Respawn(){
-        
+
         Globals.MediumReset();
         gameObject.transform.position = new Vector3(0,0); // Reset location
 
     }
-    
+
 }
