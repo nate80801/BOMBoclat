@@ -47,7 +47,7 @@ public class BoxBehavior : MonoBehaviour
 
         // plays box breaking audio
         //  FIX: change audio to a longer / more unique one
-        audioManager.PlaySFX(audioManager.Box_Breaking);
+        // audioManager.PlaySFX(audioManager.Box_Breaking);
 
         Globals.WorldMap.Remove(transform.position);
 
