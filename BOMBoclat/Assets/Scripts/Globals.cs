@@ -14,8 +14,6 @@ public static class Globals
     // Map stuff
     public static Dictionary<Vector3, GameObject> WorldMap = new Dictionary<Vector3, GameObject>();
     
-    public static int hidden_enemy_percent = 0;
-    public static int hidden_powerup_percentage = 5;
 
 
     // SCORE STUFF
@@ -70,8 +68,6 @@ public static class Globals
         SFX.Stop();
         SceneManager.LoadScene(sceneName);
         SFX.Play();
-
-
     }
     
     
@@ -117,6 +113,8 @@ public static class Globals
         MediumReset();
         ResetLives();
     }
+
+
 
 
 

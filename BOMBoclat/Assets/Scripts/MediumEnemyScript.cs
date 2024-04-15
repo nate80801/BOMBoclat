@@ -8,6 +8,7 @@ public class MediumEnemyScript : MonoBehaviour
     [SerializeField] private GameObject Box; 
     [SerializeField] private float interval = 1.25f;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,10 +61,10 @@ public class MediumEnemyScript : MonoBehaviour
         Vector3 boxSize = Box.GetComponent<Renderer>().bounds.size;
 
         // get positions of surroudning tiles 
-        Vector3 upTile = new Vector3(enemyPos.x, enemyPos.y + boxSize.y, enemyPos.z);
-        Vector3 downTile = new Vector3(enemyPos.x, enemyPos.y - boxSize.y, enemyPos.z);
-        Vector3 rightTile = new Vector3(enemyPos.x + boxSize.x, enemyPos.y, enemyPos.z);
-        Vector3 leftTile = new Vector3(enemyPos.x - boxSize.x, enemyPos.y, enemyPos.z);
+        Vector3 upTile = new Vector3(enemyPos.x, enemyPos.y + boxSize.y);
+        Vector3 downTile = new Vector3(enemyPos.x, enemyPos.y - boxSize.y);
+        Vector3 rightTile = new Vector3(enemyPos.x + boxSize.x, enemyPos.y);
+        Vector3 leftTile = new Vector3(enemyPos.x - boxSize.x, enemyPos.y);
 
         // calculate the distance to the player for all surrounding tiles 
         float distUp = DistIfPossible(playerPos, upTile);
@@ -91,4 +92,11 @@ public class MediumEnemyScript : MonoBehaviour
             Debug.Log("hit explosion - destroying enemy");
         }
     }
+
+    void OnTriggerExit2D(Collider2D col){ // To fix bomb collisions w player
+        if(col.gameObject.tag == "Bomb"){
+            col.isTrigger = false;
+        }
+    }
+
 }

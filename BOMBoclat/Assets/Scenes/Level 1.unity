@@ -487,6 +487,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverworldSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1947895979951126059, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: m_TagString
+      value: OverworldSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538859696186628242, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: boxPercentage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538859696186628242, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: wallPercentage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538859696186628242, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: enemyFastPrefab
+      value: 
+      objectReference: {fileID: 7964679413157489539, guid: 2b136cc74cd20124ca5ec8743b5f1cc7, type: 3}
+    - target: {fileID: 5538859696186628242, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: enemyPercentage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538859696186628242, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: enemySlowPrefab
+      value: 
+      objectReference: {fileID: 7820859177210169395, guid: 5d3ba826a60a8234691861eeaec7ea69, type: 3}
+    - target: {fileID: 5538859696186628242, guid: 4b2c197521ab9004792d9fd309915972, type: 3}
+      propertyPath: enemyMediumPrefab
+      value: 
+      objectReference: {fileID: 6889630405071624724, guid: dba0dd4646d985b448b371cb568045a8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

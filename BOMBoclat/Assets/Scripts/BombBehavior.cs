@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombExplode : MonoBehaviour
+public class BombBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject Blast_Prefab;
     [SerializeField] public GameObject Mother_Object; //What gameObject spawned this bomb? Most likely player 
@@ -17,7 +17,8 @@ public class BombExplode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Globals.WorldMap.Add(transform.position, gameObject);
+
         StartCoroutine(Explode());
         
     }
@@ -35,6 +36,8 @@ public class BombExplode : MonoBehaviour
     }
 
     void OnDestroy(){
+        Globals.WorldMap.Remove(transform.position);
+
     }
 
     private Vector3 UP = new Vector3(0,1);

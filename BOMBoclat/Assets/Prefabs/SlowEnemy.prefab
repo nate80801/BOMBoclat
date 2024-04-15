@@ -172,3 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Box: {fileID: 8254723224989292369, guid: e0b2fafd25a9437409b7d8b1b316b43c, type: 3}
+  interval: 1.75

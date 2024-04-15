@@ -11,6 +11,7 @@ TagManager:
   - PowerUp
   - ExitDoor
   - Audio
+  - OverworldSpawner
   layers:
   - Default
   - TransparentFX

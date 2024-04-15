@@ -171,8 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c39d4e97eb5a9c49b6f5bedefe9d53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_percentage: 4
-  powerup_percentage: 8
+  enemy_percentage: 15
+  powerup_percentage: 30
   powerup_Prefab: {fileID: 2171864182342169706, guid: dec023a07ba3b9646bbd3e2942096438, type: 3}
   exitdoor_Prefab: {fileID: 7623828814388285657, guid: ece52eb22bfb6974998bee99a6dad06a, type: 3}
-  enemy_Prefab: {fileID: 0}
+  slowEnemyPrefab: {fileID: 7820859177210169395, guid: 5d3ba826a60a8234691861eeaec7ea69, type: 3}
+  medEnemyPrefab: {fileID: 6889630405071624724, guid: dba0dd4646d985b448b371cb568045a8, type: 3}
+  fastEnemyPrefab: {fileID: 7964679413157489539, guid: 2b136cc74cd20124ca5ec8743b5f1cc7, type: 3}
+  slowPercentage: 45
+  medPercentage: 35
+  fastPercentage: 20
