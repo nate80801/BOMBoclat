@@ -19,7 +19,7 @@ public class MovementController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererLeft;
     public AnimatedSpriteRenderer spriteRendererRight;
     public AnimatedSpriteRenderer spriteRendererDeath;
-    private AnimatedSpriteRenderer activeSpriteRenderer;
+    public AnimatedSpriteRenderer activeSpriteRenderer;
 
     private void Awake()
     {
