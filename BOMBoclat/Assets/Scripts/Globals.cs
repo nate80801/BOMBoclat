@@ -14,8 +14,6 @@ public static class Globals
     // Map stuff
     public static Dictionary<Vector3, GameObject> WorldMap = new Dictionary<Vector3, GameObject>();
     
-    public static int hidden_enemy_percent = 0;
-    public static int hidden_powerup_percentage = 5;
 
 
     // SCORE STUFF
@@ -53,7 +51,6 @@ public static class Globals
     private static void ResetSpeed(){
         player_speed = 5;
     }    
-
     private static void ResetBombCount(){
         current_bomb_count = 1;
     }
@@ -61,17 +58,30 @@ public static class Globals
         blast_range = 1;
     }
 
+    // Score
+
     // Level stuff
     // Levle naming standards: Level 1, Level 2, etc.
-    public static int Level = 1;
+    public static GameObject AudioManagerObject; // AudioManager.cs sets itself here in Start()
+    public static void LoadScene(string sceneName){
+        // Stop SFX
+        AudioSource SFX = AudioManagerObject.transform.Find("SFX").gameObject.GetComponent<AudioSource>();
+        SFX.Stop();
+        SceneManager.LoadScene(sceneName);
+        SFX.Play();
+    }
+    
+    
+    public static int Level = 0;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
-        // Load in level 1 with initial stats
+        // Load in level 0 with initial stats
         HardReset();
-        SceneManager.LoadScene("Level 1");
-        Level = 1;
+        SceneManager.LoadScene("Level 0");
+        Level = 0;
     }
 
     public static void NextLevel(){ // Call from prev level
+
         Debug.Log("Next Level triggered");
         SoftReset();
         if(Level == 3){
@@ -104,6 +114,8 @@ public static class Globals
         MediumReset();
         ResetLives();
     }
+
+
 
 
 

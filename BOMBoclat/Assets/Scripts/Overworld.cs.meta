@@ -3,7 +3,10 @@ guid: a03b9613570e0a847929f3d7498cf4e9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - boxPrefab: {instanceID: 0}
+  - wallPrefab: {instanceID: 0}
+  - slowEnemyPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

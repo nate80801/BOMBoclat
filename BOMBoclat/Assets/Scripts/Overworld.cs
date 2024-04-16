@@ -9,6 +9,13 @@ public class Overworld : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject boxPrefab;
     [SerializeField] private GameObject wallPrefab;
+    // Enemy Prefabs
+    [SerializeField] private GameObject enemySlowPrefab;
+    [SerializeField] private GameObject enemyMediumPrefab;
+    [SerializeField] private GameObject enemyFastPrefab;
+    
+
+
 
 
     // Dimensions of the map, x * y grid
@@ -18,11 +25,22 @@ public class Overworld : MonoBehaviour
     // Spawnzone
     [SerializeField] private int ExcludeZone; // Zone for spawn zone, no other entities will be spawned except for the player
 
+    // % of a game object in the world
 
-    [SerializeField] private int boxPercentage = 33; // Percent of boxes in the map
-    [SerializeField] private int wallPercentage = 100; //Percentage of walls in the map
+    // Make sure all percentages add up to less than 100, try to keep it under 50-60ish or else there's like no space at all
+    [SerializeField] private int boxPercentage = 20; // Percent of boxes in the map
+    [SerializeField] private int wallPercentage = 20; //Percentage of walls in the map
 
-    
+    [SerializeField] private int enemyPercentage = 10; 
+
+    // Enemy type percentages
+    // Chances of an enemy being a particular type
+    // Independent percentages
+    [SerializeField] private int slowPercentage = 45;
+
+    [SerializeField] private int medPercentage = 35;
+    [SerializeField] private int fastPercentage = 20;
+
 
 
 
@@ -83,9 +101,6 @@ public class Overworld : MonoBehaviour
         BoxBehavior box_behavior_component = exit_box.GetComponent<BoxBehavior>();
         box_behavior_component.InitExit();
 
-
-
-
         for(int i = 0; i < x; i++){
             for (int j=0; j<y; j++){
                 // Make sure spawn zone is not populated
@@ -97,16 +112,40 @@ public class Overworld : MonoBehaviour
 
                 // The randonm space has a chance to spawn in a box, a wall, or an enemy
                 if(Random.Range(0,100) < boxPercentage){
-
                     Instantiate(boxPrefab, new Vector3(i,j), Quaternion.identity);
                     continue;
                 }
-                if(Random.Range(0,100) < wallPercentage){
+
+                else if(Random.Range(0,100) < wallPercentage){
                     if(i % 2 == 1 && j % 2 == 1) Instantiate(wallPrefab, new Vector3(i,j), Quaternion.identity);
+                    continue;
                 }
 
+                if(Random.Range(0,100) < enemyPercentage){
+                    int rand = Random.Range(0,100);
+                    // Roll for enemy type
+                    if(rand < slowPercentage) Instantiate(enemySlowPrefab, new Vector3(i,j), Quaternion.identity);
+                    else if(rand < medPercentage + slowPercentage) Instantiate(enemyMediumPrefab, new Vector3(i,j), Quaternion.identity);
+                    else if(rand < fastPercentage + slowPercentage + medPercentage) Instantiate(enemyFastPrefab, new Vector3(i,j), Quaternion.identity);
+
+                }
             }
             
         }
+    }
+
+
+
+    // spawning in enemies bc boxes will be disabled before they can start coroutines ughghgh
+    // call from boxbehavior.cs
+    // stupid stupid stupid 
+    public void DelayedInstantiate(GameObject obj, Vector3 pos, float delay){
+        StartCoroutine(DelayedInstantiateCouroutine(obj, pos, delay));  
+    }
+
+    private IEnumerator DelayedInstantiateCouroutine(GameObject obj, Vector3 pos, float delay){
+        // To solve bug, make it so that the delay is greater than the blast_dissolve time
+        yield return new WaitForSeconds(delay);
+        Instantiate(obj, pos, Quaternion.identity);
     }
 }

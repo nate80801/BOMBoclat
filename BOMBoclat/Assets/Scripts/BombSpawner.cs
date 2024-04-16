@@ -51,7 +51,7 @@ public class BombSpawner : MonoBehaviour
 
 
         // Change the range of the bomb
-        BombExplode explosionComponent = Placed_Bomb.GetComponent<BombExplode>();
+        BombBehavior explosionComponent = Placed_Bomb.GetComponent<BombBehavior>();
         explosionComponent.Mother_Object = gameObject;
         //explosionComponent.range = Globals.blast_range;
 

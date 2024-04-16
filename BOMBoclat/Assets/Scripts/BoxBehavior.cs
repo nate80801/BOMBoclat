@@ -7,12 +7,20 @@ using UnityEngine;
 public class BoxBehavior : MonoBehaviour
 {
     private bool is_exit = false;
-    [SerializeField] private int enemy_percentage = Globals.hidden_enemy_percent;
-    [SerializeField] private int powerup_percentage = Globals.hidden_powerup_percentage;
+    [SerializeField] private int enemy_percentage = 15;
+    [SerializeField] private int powerup_percentage = 30;
 
     [SerializeField] private GameObject powerup_Prefab;
     [SerializeField] private GameObject exitdoor_Prefab;
-    [SerializeField] private GameObject enemy_Prefab  = null;
+
+    // Enemy prefabs
+    [SerializeField] private GameObject slowEnemyPrefab;
+    [SerializeField] private GameObject medEnemyPrefab;
+    [SerializeField] private GameObject fastEnemyPrefab;
+    // Percentages, try to make it match overworld.cs
+    [SerializeField] private int slowPercentage = 45;
+    [SerializeField] private int medPercentage = 35;
+    [SerializeField] private int fastPercentage = 20;
 
     AudioManager audioManager;
     private void Awake()
@@ -38,12 +46,23 @@ public class BoxBehavior : MonoBehaviour
         } 
         else if(Random.Range(0,100) < enemy_percentage){
             m_SpriteRenderer.color = Color.red;
-            // hidden_entity = Instantiate(object, transform.position, Quaternion.identity).setActive(false);
+            int rand = Random.Range(0,100);
+            // Roll for enemy type
+            if(rand < slowPercentage) hidden_entity = slowEnemyPrefab;
+            else if(rand < medPercentage + slowPercentage) hidden_entity = medEnemyPrefab;
+            else if(rand < fastPercentage + slowPercentage + medPercentage) hidden_entity = fastEnemyPrefab;
             
         }
     }
 
+
+    // Need Overworld game object just for this uffghh
+    private GameObject overworldSpawnerObject;
     void OnDestroy(){
+        if(!this.gameObject.scene.isLoaded) return;
+
+        overworldSpawnerObject = GameObject.FindGameObjectWithTag("OverworldSpawner");
+        Overworld overworldComponent = overworldSpawnerObject.GetComponent<Overworld>();
 
         /*
         // plays box breaking audio
@@ -52,10 +71,10 @@ public class BoxBehavior : MonoBehaviour
         */
         
         Globals.WorldMap.Remove(transform.position);
+        Debug.Log(hidden_entity);
 
-        if(!this.gameObject.scene.isLoaded) return;
         // Instantiate objects here
-        if(hidden_entity != null) Instantiate(hidden_entity, transform.position, Quaternion.identity);
+        if(hidden_entity != null) overworldComponent.DelayedInstantiate(hidden_entity, transform.position,  Globals.blast_dissolve_time);
         Globals.IncreaseScore(1);
     }
 
@@ -84,5 +103,6 @@ public class BoxBehavior : MonoBehaviour
 
         Debug.Log("Exit at " + Globals.VectorToString(transform.position));
     }
+
 
 }
