@@ -47,9 +47,12 @@ public class PlayerEvents : MonoBehaviour
             audioManager.PlaySFX(audioManager.Exit_Door);
             Globals.NextLevel();
         }
-        
+    }
 
-
+    void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.tag == "Hostile"){
+            StartCoroutine(Die());
+        }
     }
 
 

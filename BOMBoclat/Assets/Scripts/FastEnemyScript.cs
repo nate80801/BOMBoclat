@@ -63,7 +63,7 @@ public class FastEnemyScript : MonoBehaviour
     // calculate the next move by checking tiles in all directions 
     Vector3 NextMove() {
         Vector3 newPos = CalculateNewPos();
-        Debug.Log("newPos: " + newPos);
+        // Debug.Log("newPos: " + newPos);
 
         // change movement direction (horiz/vertical)
         if (!IsWalkable(newPos)) {
