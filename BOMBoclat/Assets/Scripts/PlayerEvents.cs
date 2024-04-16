@@ -9,9 +9,11 @@ public class PlayerEvents : MonoBehaviour
     private PlayerMovement playerMovement;
 
     AudioManager audioManager;
+    Overworld overworldComponent;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        overworldComponent = GameObject.FindGameObjectWithTag("OverworldSpawner").GetComponent<Overworld>(); // Use DelayedRespawnPlayer()
     }
 
     // Start is called before the first frame update
@@ -30,7 +32,7 @@ public class PlayerEvents : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col){
         Debug.Log(col.gameObject.name + " : " + gameObject.name);
         if(col.gameObject.tag == "Hostile"){
-            StartCoroutine(Die());
+            Die();
         }
         else if(col.gameObject.tag == "PowerUp"){
             PowerUpBehavior PowerComponent = col.gameObject.GetComponent<PowerUpBehavior>();
@@ -47,7 +49,7 @@ public class PlayerEvents : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag == "Hostile"){
-            StartCoroutine(Die());
+            Die();
         }
     }
 
@@ -59,14 +61,13 @@ public class PlayerEvents : MonoBehaviour
         }
     }
 
-    private IEnumerator Die(){ 
+    private void Die(){ 
 
         // plays player dying audio
         audioManager.PlaySFX(audioManager.Player_Dying);
 
         // Make it look like the game object is destroyed by vanishing it
         // Make the player reset to spawn then make the object appear again
-        Vanish();
         Globals.DecrementLives();
         if(Globals.player_lives == 0){
             // Game Over
@@ -74,10 +75,8 @@ public class PlayerEvents : MonoBehaviour
             Debug.Log("Game Over!");
             Globals.HardReset();
         }
-        else {
-            yield return new WaitForSeconds(Globals.explosion_delay_time);
-            Respawn();
-            UnVanish();
+        else{
+            overworldComponent.DelayedRespawnPlayer(); // vanishes player then unvanishes them
         }
     }
 
@@ -87,6 +86,7 @@ public class PlayerEvents : MonoBehaviour
     }
 
     private void UnVanish(){ // I'm too lazy to actually destroy the game object
+
         spriteRenderer.enabled = true;
         playerMovement.enabled = true;
     }
