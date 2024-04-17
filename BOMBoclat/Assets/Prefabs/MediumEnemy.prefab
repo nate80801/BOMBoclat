@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5815314486112761931}
   - component: {fileID: 6771227112978484903}
   - component: {fileID: 8933879242500264322}
+  - component: {fileID: 1982533795707511406}
   m_Layer: 0
   m_Name: MediumEnemy
   m_TagString: Hostile
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.03342416, g: 0.28190127, b: 0.81761, a: 1}
+  m_Sprite: {fileID: 211701141, guid: 084b07229f603b94fa50154720892e51, type: 3}
+  m_Color: {r: 0.9658014, g: 1, b: 0.8349056, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,11 +120,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 1.1875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -173,3 +174,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Box: {fileID: 8254723224989292369, guid: e0b2fafd25a9437409b7d8b1b316b43c, type: 3}
   interval: 1.25
+--- !u!95 &1982533795707511406
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889630405071624724}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47be12f0f06565a408fd14ba2d9e41c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

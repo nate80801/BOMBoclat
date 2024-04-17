@@ -61,7 +61,7 @@ public class BombBehavior : MonoBehaviour
                         return;
                     case "Box":
                         blast.SetActive(true);
-                        foundObj.GetComponent<Collider2D>().enabled = false;
+                        //foundObj.GetComponent<Collider2D>().enabled = false;
                         foundObj.GetComponent<Animator>().SetTrigger("Break");
                         Destroy(foundObj , GlobalAnimTiming.Box_Break);
                         return;                    
