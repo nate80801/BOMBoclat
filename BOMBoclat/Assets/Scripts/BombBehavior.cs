@@ -31,6 +31,8 @@ public class BombBehavior : MonoBehaviour
 
 
 
+
+
     void OnEnable(){
         //StartCoroutine(Explode());
     }
@@ -64,7 +66,7 @@ public class BombBehavior : MonoBehaviour
                         //foundObj.GetComponent<Collider2D>().enabled = false;
                         foundObj.GetComponent<Animator>().SetTrigger("Break");
                         Destroy(foundObj , GlobalAnimTiming.Box_Break);
-                        return;                    
+                        return;
                 }
             }
             blast.SetActive(true);
@@ -74,16 +76,30 @@ public class BombBehavior : MonoBehaviour
 
     public IEnumerator Explode(){
 
-        // Delay
-        for(int i = 0; i  < Globals.explosion_delay_time; i++){
-            // we delay for Globals.explosion_delay_time seconds
-
-            //CHANGE_SPRITE(WHITE)
-            //REVERT_SPRITE()
-            yield return new WaitForSeconds(Globals.explosion_delay_time);
-        }
+        yield return new WaitForSeconds(Globals.explosion_delay_time);
 
 
+        GetComponent<Collider2D>().enabled = false;
+        Instantiate(Blast_Prefab, transform.position, Quaternion.identity).SetActive(true);
+
+        ExplodeLine(UP);
+        ExplodeLine(RIGHT);
+        ExplodeLine(LEFT);
+        ExplodeLine(DOWN);
+
+        // plays bomb explosion audio
+        audioManager.PlaySFX(audioManager.Bomb_Explosion);
+
+
+        BombSpawner BombSpawner_Component = Mother_Object.GetComponent<BombSpawner>();
+        BombSpawner_Component.StoreBomb();
+        BombSpawner_Component.SetRemove(transform.position);
+
+        Destroy(gameObject);
+    }
+
+    public void ExplodeImmediately(){
+        GetComponent<Collider2D>().enabled = false;
         Instantiate(Blast_Prefab, transform.position, Quaternion.identity).SetActive(true);
 
         ExplodeLine(UP);

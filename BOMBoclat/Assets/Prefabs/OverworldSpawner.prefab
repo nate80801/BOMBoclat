@@ -52,10 +52,4 @@ MonoBehaviour:
   enemyFastPrefab: {fileID: 7964679413157489539, guid: 2b136cc74cd20124ca5ec8743b5f1cc7, type: 3}
   x: 30
   y: 30
-  ExcludeZone: 3
-  boxPercentage: 20
-  wallPercentage: 20
-  enemyPercentage: 2
-  slowPercentage: 45
-  medPercentage: 35
-  fastPercentage: 20
+  ExcludeZone: 6

@@ -105,12 +105,13 @@ public class PlayerEvents : MonoBehaviour
 
 
         yield return new WaitForSeconds(Globals.explosion_delay_time);
-        Globals.MediumReset();
 
         // Re enable the player
         transform.position = new Vector3(0, 0);
         UnVanish();
         animator.SetBool("IsDead" , false);
+        Globals.MediumReset();
+
 
 
 

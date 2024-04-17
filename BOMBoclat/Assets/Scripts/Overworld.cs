@@ -30,18 +30,7 @@ public class Overworld : MonoBehaviour
     // % of a game object in the world
 
     // Make sure all percentages add up to less than 100, try to keep it under 50-60ish or else there's like no space at all
-    [SerializeField] private int boxPercentage = 20; // Percent of boxes in the map
-    [SerializeField] private int wallPercentage = 20; //Percentage of walls in the map
 
-    [SerializeField] private int enemyPercentage = 10; 
-
-    // Enemy type percentages
-    // Chances of an enemy being a particular type
-    // Independent percentages
-    [SerializeField] private int slowPercentage = 45;
-
-    [SerializeField] private int medPercentage = 35;
-    [SerializeField] private int fastPercentage = 20;
 
 
 
@@ -113,22 +102,22 @@ public class Overworld : MonoBehaviour
 
 
                 // The randonm space has a chance to spawn in a box, a wall, or an enemy
-                if(Random.Range(0,100) < boxPercentage){
+                if(Random.Range(0,100) < Globals.boxPercentage){
                     Instantiate(boxPrefab, new Vector3(i,j), Quaternion.identity);
                     continue;
                 }
 
-                else if(Random.Range(0,100) < wallPercentage){
+                else if(Random.Range(0,100) < Globals.wallPercentage){
                     if(i % 2 == 1 && j % 2 == 1) Instantiate(wallPrefab, new Vector3(i,j), Quaternion.identity);
                     continue;
                 }
 
-                if(Random.Range(0,100) < enemyPercentage){
+                if(Random.Range(0,100) < Globals.enemyPercentage){
                     int rand = Random.Range(0,100);
                     // Roll for enemy type
-                    if(rand < slowPercentage) Instantiate(enemySlowPrefab, new Vector3(i,j), Quaternion.identity);
-                    else if(rand < medPercentage + slowPercentage) Instantiate(enemyMediumPrefab, new Vector3(i,j), Quaternion.identity);
-                    else if(rand < fastPercentage + slowPercentage + medPercentage) Instantiate(enemyFastPrefab, new Vector3(i,j), Quaternion.identity);
+                    if(rand < Globals.slowPercentage) Instantiate(enemySlowPrefab, new Vector3(i,j), Quaternion.identity);
+                    else if(rand < Globals.medPercentage + Globals.slowPercentage) Instantiate(enemyMediumPrefab, new Vector3(i,j), Quaternion.identity);
+                    else if(rand < Globals.fastPercentage + Globals.slowPercentage + Globals.medPercentage) Instantiate(enemyFastPrefab, new Vector3(i,j), Quaternion.identity);
 
                 }
             }
@@ -151,22 +140,6 @@ public class Overworld : MonoBehaviour
     }
 
 
-    // Need to do a respawn of player
-    public void DelayedRespawnPlayer(){ // Vanishes the player then makes them appear again
-        StartCoroutine(RespawnPlayerCoroutine());
-    }
-    private IEnumerator RespawnPlayerCoroutine(){
-        PlayerEvents playerEventsComponent = playerObject.GetComponent<PlayerEvents>(); // If we want to add i- frames
-        // Player is currently disabled
-        playerObject.SetActive(false);
-        yield return new WaitForSeconds(Globals.explosion_delay_time);
-        // Re enable the player
-        Globals.MediumReset();
-        playerObject.SetActive(true);
-        playerObject.transform.position = new Vector3(0, 0);
 
-
-
-
-    }
+    
 }

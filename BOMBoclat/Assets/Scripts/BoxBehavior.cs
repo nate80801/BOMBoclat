@@ -17,10 +17,6 @@ public class BoxBehavior : MonoBehaviour
     [SerializeField] private GameObject slowEnemyPrefab;
     [SerializeField] private GameObject medEnemyPrefab;
     [SerializeField] private GameObject fastEnemyPrefab;
-    // Percentages, try to make it match overworld.cs
-    [SerializeField] private int slowPercentage = 45;
-    [SerializeField] private int medPercentage = 35;
-    [SerializeField] private int fastPercentage = 20;
 
     AudioManager audioManager;
     private void Awake()
@@ -48,9 +44,9 @@ public class BoxBehavior : MonoBehaviour
             m_SpriteRenderer.color = Color.red;
             int rand = Random.Range(0,100);
             // Roll for enemy type
-            if(rand < slowPercentage) hidden_entity = slowEnemyPrefab;
-            else if(rand < medPercentage + slowPercentage) hidden_entity = medEnemyPrefab;
-            else if(rand < fastPercentage + slowPercentage + medPercentage) hidden_entity = fastEnemyPrefab;
+            if(rand < Globals.slowPercentage) hidden_entity = slowEnemyPrefab;
+            else if(rand < Globals.medPercentage + Globals.slowPercentage) hidden_entity = medEnemyPrefab;
+            else if(rand < Globals.fastPercentage + Globals.slowPercentage + Globals.medPercentage) hidden_entity = fastEnemyPrefab;
             
         }
     }
