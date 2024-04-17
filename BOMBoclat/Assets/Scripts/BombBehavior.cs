@@ -55,12 +55,15 @@ public class BombBehavior : MonoBehaviour
             
             
             if(Globals.WorldMap.ContainsKey(newPosition)){
-                switch(Globals.WorldMap[newPosition].tag){
+                GameObject foundObj = Globals.WorldMap[newPosition];
+                switch(foundObj.tag){
                     case "Wall":
                         return;
                     case "Box":
                         blast.SetActive(true);
-                        Destroy(Globals.WorldMap[newPosition]);
+                        foundObj.GetComponent<Collider2D>().enabled = false;
+                        foundObj.GetComponent<Animator>().SetTrigger("Break");
+                        Destroy(foundObj , GlobalAnimTiming.Box_Break);
                         return;                    
                 }
             }
