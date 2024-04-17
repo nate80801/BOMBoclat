@@ -76,7 +76,6 @@ public class SlowEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
-            Debug.Log("hit explosion - destroying enemy");
         }
     }
 }

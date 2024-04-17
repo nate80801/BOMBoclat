@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         hor_axis = Input.GetAxisRaw("Horizontal");
         vert_axis = Input.GetAxisRaw("Vertical");        
 
+
         transform.position += new Vector3(hor_axis, vert_axis, 0) * Globals.player_speed * Time.deltaTime;
     }
 }

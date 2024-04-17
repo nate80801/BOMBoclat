@@ -47,15 +47,15 @@ MonoBehaviour:
   playerPrefab: {fileID: 6576586187341949011, guid: 67bef07a44b33784ca68a6dbda03dc1f, type: 3}
   boxPrefab: {fileID: 8254723224989292369, guid: e0b2fafd25a9437409b7d8b1b316b43c, type: 3}
   wallPrefab: {fileID: 4012378392971015890, guid: 4dbd741785367224c9083997f2d40036, type: 3}
-  enemySlowPrefab: {fileID: 0}
-  enemyMediumPrefab: {fileID: 0}
-  enemyFastPrefab: {fileID: 0}
+  enemySlowPrefab: {fileID: 7820859177210169395, guid: 5d3ba826a60a8234691861eeaec7ea69, type: 3}
+  enemyMediumPrefab: {fileID: 6889630405071624724, guid: dba0dd4646d985b448b371cb568045a8, type: 3}
+  enemyFastPrefab: {fileID: 7964679413157489539, guid: 2b136cc74cd20124ca5ec8743b5f1cc7, type: 3}
   x: 30
   y: 30
   ExcludeZone: 3
-  boxPercentage: 33
-  wallPercentage: 100
-  enemyPercentage: 10
+  boxPercentage: 20
+  wallPercentage: 20
+  enemyPercentage: 2
   slowPercentage: 45
   medPercentage: 35
   fastPercentage: 20
