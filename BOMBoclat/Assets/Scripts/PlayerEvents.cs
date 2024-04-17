@@ -12,6 +12,7 @@ public class PlayerEvents : MonoBehaviour
     Overworld overworldComponent;
     Animator animator;
     Collider2D thisCollider;
+    Rigidbody2D thisRigidbody;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -21,10 +22,11 @@ public class PlayerEvents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thisCollider = gameObject.GetComponent<Collider2D>();
+        thisCollider = GetComponent<Collider2D>();
+        thisRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
 
     }
 
@@ -100,9 +102,11 @@ public class PlayerEvents : MonoBehaviour
 
 
     private IEnumerator DelayedRespawn(){
-        // Player is currently disabled
-        Globals.MediumReset();
+
+
         yield return new WaitForSeconds(Globals.explosion_delay_time);
+        Globals.MediumReset();
+
         // Re enable the player
         transform.position = new Vector3(0, 0);
         UnVanish();
@@ -116,6 +120,8 @@ public class PlayerEvents : MonoBehaviour
     private void Vanish(){
         //spriteRenderer.enabled = false;
         thisCollider.enabled = false;
+
+        thisRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
         playerMovement.enabled = false;
     }
 
@@ -123,6 +129,8 @@ public class PlayerEvents : MonoBehaviour
 
         //spriteRenderer.enabled = true;
         thisCollider.enabled = true;
+
+        thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerMovement.enabled = true;
         
     }

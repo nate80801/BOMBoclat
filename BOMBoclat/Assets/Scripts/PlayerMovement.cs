@@ -33,11 +33,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         hor_axis = Input.GetAxisRaw("Horizontal");
         vert_axis = Input.GetAxisRaw("Vertical");
 
+        
+
         movement.Set(hor_axis, vert_axis, 0);
-        rb.velocity = movement * Globals.player_speed;      // testing to see if this fixes collisions   
+        rb.velocity = movement * Globals.player_speed;     
 
 
         animator.SetFloat(_Speed , Globals.player_speed - og_speed + 1);

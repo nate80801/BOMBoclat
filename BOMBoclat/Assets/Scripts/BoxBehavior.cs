@@ -41,10 +41,10 @@ public class BoxBehavior : MonoBehaviour
 
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
         if(Random.Range(0,100) < powerup_percentage){
-            m_SpriteRenderer.color = Color.green;
             hidden_entity = powerup_Prefab;
         } 
         else if(Random.Range(0,100) < enemy_percentage){
+            GetComponent<Animator>().SetBool("EnemyHidden", true);
             m_SpriteRenderer.color = Color.red;
             int rand = Random.Range(0,100);
             // Roll for enemy type

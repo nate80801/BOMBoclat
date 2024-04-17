@@ -8,6 +8,9 @@ public class PowerUpBehavior : MonoBehaviour
     private int roll;
     Powerup[] PowerArr;
 
+    // SRITES
+    [SerializeField] Sprite[] sprites; // MAKE SURE INDICES MATCH w/ powerup array
+
     AudioManager audioManager;
     private void Awake()
     {
@@ -29,6 +32,9 @@ public class PowerUpBehavior : MonoBehaviour
 
         // Roll for random powerup
         roll = Random.Range(0, PowerArr.Length); 
+
+
+        GetComponent<SpriteRenderer>().sprite = sprites[roll];
 
     }
 

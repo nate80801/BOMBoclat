@@ -29,6 +29,13 @@ public static class Globals
     public static int current_bomb_count = 1;
     public static int blast_range = 1;
 
+    // Default player stats
+
+    private static int DEFAULT_LIVES = player_lives;
+    private static float DEFAULT_SPEED = player_speed;
+    private static int DEFAULT_COUNT = current_bomb_count;
+    private static int DEFAULT_RANGE = blast_range;
+
 
     public static string VectorToString(Vector3 vector){
         return("x: " + vector.x + ", y: " + vector.y);
@@ -45,20 +52,20 @@ public static class Globals
         player_lives++;
     }
 
-
+    // REMEMBER TO LOOK AT THESE FOR DEFAULT VALUES
     // Resetting, used for respawning
     private static void ResetLives(){
-        player_lives = 3;
+        player_lives = DEFAULT_LIVES;
     }
     private static void ResetSpeed(){
-        player_speed = 5;
+        player_speed = DEFAULT_SPEED;
     }    
 
     private static void ResetBombCount(){
-        current_bomb_count = 1;
+        current_bomb_count = DEFAULT_COUNT;
     }
     private static void ResetBlastRange(){
-        blast_range = 1;
+        blast_range = DEFAULT_RANGE;
     }
 
     // Level stuff

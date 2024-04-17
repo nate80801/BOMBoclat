@@ -14,6 +14,7 @@ public class Blast_Dissolve : MonoBehaviour
     }
     void OnEnable(){
         Destroy(gameObject, Globals.blast_dissolve_time);
+
     }
     // Update is called once per frame
     void Update()
