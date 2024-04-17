@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3907588516575392110}
   - component: {fileID: 2893149015091502868}
   - component: {fileID: 3748402260951704193}
+  - component: {fileID: 4134397017270345206}
   m_Layer: 0
   m_Name: SlowEnemy
   m_TagString: Hostile
@@ -29,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 7820859177210169395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.481493, y: 2.6761, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 12.495, y: 3.611, z: 0}
+  m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5660378, g: 0.1833392, b: 0.1833392, a: 1}
+  m_Sprite: {fileID: 1774129909, guid: 974a1b22788411a4bb1d327a5de2ed0f, type: 3}
+  m_Color: {r: 0.9445477, g: 1, b: 0.3254717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -146,7 +147,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0949043}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +158,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.8101914}
   m_EdgeRadius: 0
 --- !u!114 &3748402260951704193
 MonoBehaviour:
@@ -173,3 +174,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Box: {fileID: 8254723224989292369, guid: e0b2fafd25a9437409b7d8b1b316b43c, type: 3}
   interval: 1.75
+--- !u!95 &4134397017270345206
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7820859177210169395}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa80e995fb8ffff4fa278dedbae1a027, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

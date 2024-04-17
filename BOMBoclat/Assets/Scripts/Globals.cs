@@ -25,9 +25,16 @@ public static class Globals
 
     // PLAYER STATS
     public static int player_lives = 3;
-    public static float player_speed = 5f;
+    public static float player_speed = 3f;
     public static int current_bomb_count = 1;
     public static int blast_range = 1;
+
+    // Default player stats
+
+    private static int DEFAULT_LIVES = player_lives;
+    private static float DEFAULT_SPEED = player_speed;
+    private static int DEFAULT_COUNT = current_bomb_count;
+    private static int DEFAULT_RANGE = blast_range;
 
 
     public static string VectorToString(Vector3 vector){
@@ -37,25 +44,27 @@ public static class Globals
     // Adjusters, used to decrement or increment these attributes
     public static void DecrementLives(){
         player_lives--;
+        Debug.Log("Lives: " + player_lives);
+
     }
 
     public static void IncrementLives(){
         player_lives++;
     }
 
-
+    // REMEMBER TO LOOK AT THESE FOR DEFAULT VALUES
     // Resetting, used for respawning
     private static void ResetLives(){
-        player_lives = 3;
+        player_lives = DEFAULT_LIVES;
     }
     private static void ResetSpeed(){
-        player_speed = 5;
+        player_speed = DEFAULT_SPEED;
     }    
     private static void ResetBombCount(){
-        current_bomb_count = 1;
+        current_bomb_count = DEFAULT_COUNT;
     }
     private static void ResetBlastRange(){
-        blast_range = 1;
+        blast_range = DEFAULT_RANGE;
     }
 
     // Score

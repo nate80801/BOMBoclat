@@ -8,6 +8,9 @@ public class PowerUpBehavior : MonoBehaviour
     private int roll;
     Powerup[] PowerArr;
 
+    // SRITES
+    [SerializeField] Sprite[] sprites; // MAKE SURE INDICES MATCH w/ powerup array
+
     AudioManager audioManager;
     private void Awake()
     {
@@ -17,6 +20,7 @@ public class PowerUpBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         PowerArr = new Powerup[]{
             // List all possible things we want powerups to do
             () => {if(Globals.player_speed < 10) Globals.player_speed += .3f; Debug.Log("new player speed: " + Globals.player_speed);}, 
@@ -24,12 +28,19 @@ public class PowerUpBehavior : MonoBehaviour
             () => {Globals.current_bomb_count++; Debug.Log("new bomb count: " + Globals.current_bomb_count);}
         };
 
+        
+
         // Roll for random powerup
         roll = Random.Range(0, PowerArr.Length); 
+
+
+        GetComponent<SpriteRenderer>().sprite = sprites[roll];
+
     }
 
     public void Activate(){
         PowerArr[roll]();
+
 
         // plays power up audio
         audioManager.PlaySFX(audioManager.Powerup);
@@ -40,4 +51,6 @@ public class PowerUpBehavior : MonoBehaviour
     {
         
     }
+
+    //make a function to change the sprite of this powerup
 }

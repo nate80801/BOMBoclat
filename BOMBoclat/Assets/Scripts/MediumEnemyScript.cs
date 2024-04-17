@@ -26,6 +26,11 @@ public class MediumEnemyScript : MonoBehaviour
             while (curTime < interval) {
                 curTime += Time.deltaTime; 
                 transform.position = Vector3.Lerp(start, newPos, curTime / interval);
+
+                // Animator control
+                Vector3 deltaPos = transform.position - start;
+                GetComponent<Animator>().SetFloat("Horizontal", deltaPos.x);
+                GetComponent<Animator>().SetFloat("Vertical", deltaPos.y);
                 yield return null; 
             }
 
@@ -89,7 +94,6 @@ public class MediumEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
-            Debug.Log("hit explosion - destroying enemy");
         }
     }
 

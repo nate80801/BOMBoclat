@@ -5,6 +5,8 @@ using UnityEngine;
 // To use System Random instead of Unity Random
 public class Overworld : MonoBehaviour
 {
+
+    private GameObject playerObject;
     // Prefabs for GameObjects we referennce
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject boxPrefab;
@@ -63,7 +65,7 @@ public class Overworld : MonoBehaviour
     }
 
     private void SpawnPlayer(){
-        Instantiate(playerPrefab, new Vector3(0,0), Quaternion.identity);
+        playerObject = Instantiate(playerPrefab, new Vector3(0,0), Quaternion.identity);
     }
 
     private void SpawnBorder(){
@@ -140,12 +142,31 @@ public class Overworld : MonoBehaviour
     // call from boxbehavior.cs
     // stupid stupid stupid 
     public void DelayedInstantiate(GameObject obj, Vector3 pos, float delay){
-        StartCoroutine(DelayedInstantiateCouroutine(obj, pos, delay));  
+        StartCoroutine(DelayedInstantiateCoroutine(obj, pos, delay));  
     }
-
-    private IEnumerator DelayedInstantiateCouroutine(GameObject obj, Vector3 pos, float delay){
+    private IEnumerator DelayedInstantiateCoroutine(GameObject obj, Vector3 pos, float delay){ // to be used
         // To solve bug, make it so that the delay is greater than the blast_dissolve time
         yield return new WaitForSeconds(delay);
         Instantiate(obj, pos, Quaternion.identity);
+    }
+
+
+    // Need to do a respawn of player
+    public void DelayedRespawnPlayer(){ // Vanishes the player then makes them appear again
+        StartCoroutine(RespawnPlayerCoroutine());
+    }
+    private IEnumerator RespawnPlayerCoroutine(){
+        PlayerEvents playerEventsComponent = playerObject.GetComponent<PlayerEvents>(); // If we want to add i- frames
+        // Player is currently disabled
+        playerObject.SetActive(false);
+        yield return new WaitForSeconds(Globals.explosion_delay_time);
+        // Re enable the player
+        Globals.MediumReset();
+        playerObject.SetActive(true);
+        playerObject.transform.position = new Vector3(0, 0);
+
+
+
+
     }
 }
