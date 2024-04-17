@@ -10,7 +10,9 @@ public class AudioManager : MonoBehaviour
     [Header("-----------Audio Clips-----------")]
     // background music
     public AudioClip Main_Menu;
-    public AudioClip Gameplay;
+    public AudioClip Level_1;
+    public AudioClip Level_2;
+    public AudioClip Level_3;
 
     // sound effects
     public AudioClip Bomb_Explosion;
@@ -27,7 +29,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         // FIX: make sure audio loops
 
-        musicSource.clip = Gameplay; 
+        musicSource.clip = Main_Menu; 
         musicSource.Play();  
     }
 

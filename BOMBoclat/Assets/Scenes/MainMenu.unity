@@ -855,7 +855,9 @@ MonoBehaviour:
   musicSource: {fileID: 1816047004}
   SFXSource: {fileID: 1467819626}
   Main_Menu: {fileID: 8300000, guid: bdf89ad7ee8131e489a8093a4b115cb2, type: 3}
-  Gameplay: {fileID: 8300000, guid: 96cc366edf9f1b24881764898faaef64, type: 3}
+  Level_1: {fileID: 8300000, guid: 03148167a67f4c14588e88d4aafc04bf, type: 3}
+  Level_2: {fileID: 8300000, guid: 5468dab4caf1a6a489c84daffdd20ef5, type: 3}
+  Level_3: {fileID: 8300000, guid: c398af1e19656e548bde5410962b8b06, type: 3}
   Bomb_Explosion: {fileID: 8300000, guid: 47a2029a6b3714544903292c03c509f5, type: 3}
   Box_Breaking: {fileID: 8300000, guid: 62fb52535108d1c4d83d4ca79696eb83, type: 3}
   Exit_Door: {fileID: 8300000, guid: 80169924e4d4e72439529573a287db6a, type: 3}
