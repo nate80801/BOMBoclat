@@ -5,7 +5,7 @@ using UnityEngine;
 public class FastEnemyScript : MonoBehaviour
 {
     private bool horizMovement, negMovement; 
-    [SerializeField] private float interval = 0.75f; 
+    [SerializeField] private float interval = 0.5f; 
     [SerializeField] private GameObject Box;
 
 
@@ -69,21 +69,18 @@ public class FastEnemyScript : MonoBehaviour
         if (!IsWalkable(newPos)) {
             horizMovement = !horizMovement; 
             newPos = CalculateNewPos();
-            Debug.Log("not walkable1. new pos: " + newPos); 
        }
 
         // change movement direction (positive/negative)
        if (!IsWalkable(newPos)) {
             negMovement = !negMovement; 
             newPos = CalculateNewPos();
-            Debug.Log("not walkable2. new pos: " + newPos); 
        }
 
         // change direction to the opposite of the original direction 
         if (!IsWalkable(newPos)) {
             horizMovement = !horizMovement; 
             newPos = CalculateNewPos();
-            Debug.Log("not walkable3. new pos: " + newPos); 
        }
 
         // all directions are obstructed 
@@ -96,6 +93,7 @@ public class FastEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
+            Globals.IncreaseScore(100);
             Debug.Log("hit explosion - destroying enemy");
         }
     }

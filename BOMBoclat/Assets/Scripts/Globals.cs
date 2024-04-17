@@ -20,6 +20,7 @@ public static class Globals
     public static int SCORE = 0;
     public static void IncreaseScore(int n){
         SCORE += n;
+        Debug.Log("new score: " + SCORE);
     }
 
 
@@ -86,6 +87,7 @@ public static class Globals
         if(Level == 3){
             Debug.Log("You win!!!!");
             // TODO: If we are on the final level, load the final level dance party    
+            SaveHighScore();
             return;
         }
         else{
@@ -114,7 +116,18 @@ public static class Globals
         ResetLives();
     }
 
-
+    // Used to save the player's high score after the game ends
+    public static void SaveHighScore() 
+    {
+        if (SCORE > PlayerPrefs.GetInt("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", SCORE);
+ 
+            // TODO: flash "new high score!" on screen? 
+           
+            Debug.Log("new high score set: " + PlayerPrefs.GetInt("highScore"));
+        } 
+    }
 
 
 

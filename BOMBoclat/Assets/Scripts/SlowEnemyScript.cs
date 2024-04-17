@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlowEnemyScript : MonoBehaviour
 {
     [SerializeField] private GameObject Box;
-    [SerializeField] private float interval = 1.75f; 
+    [SerializeField] private float interval = 1.5f; 
     private bool horizMovement, negMovement; 
     
     // Start is called before the first frame update
@@ -76,6 +76,7 @@ public class SlowEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
+            Globals.IncreaseScore(50);
             Debug.Log("hit explosion - destroying enemy");
         }
     }

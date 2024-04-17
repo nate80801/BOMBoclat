@@ -39,10 +39,11 @@ public class PlayerEvents : MonoBehaviour
             PowerComponent.Activate();
             Destroy(col.gameObject);
             
-            Globals.IncreaseScore(3);
+            Globals.IncreaseScore(10);
         }
         else if(col.gameObject.tag == "ExitDoor"){
             audioManager.PlaySFX(audioManager.Exit_Door);
+            Globals.IncreaseScore(1000);
             Globals.NextLevel();
         }
     }
@@ -73,6 +74,7 @@ public class PlayerEvents : MonoBehaviour
             // Game Over
             Destroy(gameObject);
             Debug.Log("Game Over!");
+            Globals.SaveHighScore();
             Globals.HardReset();
         }
         else{
