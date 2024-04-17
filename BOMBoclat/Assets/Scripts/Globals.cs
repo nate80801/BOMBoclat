@@ -25,7 +25,7 @@ public static class Globals
 
     // PLAYER STATS
     public static int player_lives = 3;
-    public static float player_speed = 5f;
+    public static float player_speed = 3f;
     public static int current_bomb_count = 1;
     public static int blast_range = 1;
 
@@ -37,6 +37,8 @@ public static class Globals
     // Adjusters, used to decrement or increment these attributes
     public static void DecrementLives(){
         player_lives--;
+        Debug.Log("Lives: " + player_lives);
+
     }
 
     public static void IncrementLives(){

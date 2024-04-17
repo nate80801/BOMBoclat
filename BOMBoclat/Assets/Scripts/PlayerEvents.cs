@@ -10,6 +10,8 @@ public class PlayerEvents : MonoBehaviour
 
     AudioManager audioManager;
     Overworld overworldComponent;
+    Animator animator;
+    Collider2D thisCollider;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -19,8 +21,11 @@ public class PlayerEvents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        thisCollider = gameObject.GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         playerMovement = gameObject.GetComponent<PlayerMovement>();
+
     }
 
     // Update is called once per frame
@@ -66,6 +71,18 @@ public class PlayerEvents : MonoBehaviour
         // plays player dying audio
         audioManager.PlaySFX(audioManager.Player_Dying);
 
+        Vanish();
+        animator.SetBool("IsDead", true);
+        Globals.DecrementLives();
+        if(Globals.player_lives == 0){
+            Destroy(gameObject);
+            Globals.HardReset();
+        }
+        else{
+            StartCoroutine(DelayedRespawn());
+        }
+        
+/*      THIS WORKS BUT IM TESTING SOMETHING ELSE
         // Make it look like the game object is destroyed by vanishing it
         // Make the player reset to spawn then make the object appear again
         Globals.DecrementLives();
@@ -78,17 +95,36 @@ public class PlayerEvents : MonoBehaviour
         else{
             overworldComponent.DelayedRespawnPlayer(); // vanishes player then unvanishes them
         }
+*/
+    }
+
+
+    private IEnumerator DelayedRespawn(){
+        // Player is currently disabled
+        Globals.MediumReset();
+        yield return new WaitForSeconds(Globals.explosion_delay_time);
+        // Re enable the player
+        transform.position = new Vector3(0, 0);
+        UnVanish();
+        animator.SetBool("IsDead" , false);
+
+
+
+
     }
 
     private void Vanish(){
-        spriteRenderer.enabled = false;
+        //spriteRenderer.enabled = false;
+        thisCollider.enabled = false;
         playerMovement.enabled = false;
     }
 
     private void UnVanish(){ // I'm too lazy to actually destroy the game object
 
-        spriteRenderer.enabled = true;
+        //spriteRenderer.enabled = true;
+        thisCollider.enabled = true;
         playerMovement.enabled = true;
+        
     }
 
     void Respawn(){

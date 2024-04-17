@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9a7e18b92a2f40844a08a35883a47aaf
+guid: b85d052c43cccd84681f9ac812fd38e9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,127 +110,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BrickDestroy_0
+      name: Death Explosion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4732301de9c2ace4b8e8987f0bde41d9
-      internalID: 781402709
+      spriteID: 0828463fbf07a1e48a3cce9758f6cdb9
+      internalID: -977738962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BrickDestroy_1
+      name: Death Explosion_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 50
         y: 0
-        width: 16
-        height: 16
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19ca1f5fe14808e49b7d78c00af02710
-      internalID: -616899866
+      spriteID: dabbbcb7a47ddce4686229cc163694d0
+      internalID: 817705548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BrickDestroy_2
+      name: Death Explosion_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 100
         y: 0
-        width: 16
-        height: 16
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b063b8bc2c24f39419806c0ffb0428d5
-      internalID: 1595510951
+      spriteID: cd9840d9786463e4cb7a1afcacfef882
+      internalID: -662072771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BrickDestroy_3
+      name: Death Explosion_3
       rect:
         serializedVersion: 2
-        x: 48
+        x: 150
         y: 0
-        width: 16
-        height: 16
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8791e06ceb8f85042aa12ecf496ccb54
-      internalID: 1570114760
+      spriteID: 46247aa99407da241b591057f2fe3f6d
+      internalID: -353719865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BrickDestroy_4
+      name: Death Explosion_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 200
         y: 0
-        width: 16
-        height: 16
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 305b58046ea19674f807c9aa8fd7162b
-      internalID: -733852510
+      spriteID: 46518c69adaf066429bbc95c220e291f
+      internalID: 385494966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BrickDestroy_5
+      name: Death Explosion_5
       rect:
         serializedVersion: 2
-        x: 80
+        x: 250
         y: 0
-        width: 16
-        height: 16
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 683f9aad1606e5b46bcb5920858d2ae6
-      internalID: -818598135
+      spriteID: 0557f49647659d741bab9ed3f2d9b83e
+      internalID: -345308466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Explosion_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810a9f0a134a8b947891ce9dea9c0679
+      internalID: -1608679836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death Explosion_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71f5b7119041dca49a26e9873dbedffd
+      internalID: 1029825828
       vertices: []
       indices: 
       edges: []
@@ -246,12 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BrickDestroy_0: 781402709
-      BrickDestroy_1: -616899866
-      BrickDestroy_2: 1595510951
-      BrickDestroy_3: 1570114760
-      BrickDestroy_4: -733852510
-      BrickDestroy_5: -818598135
+      Death Explosion_0: -977738962
+      Death Explosion_1: 817705548
+      Death Explosion_2: -662072771
+      Death Explosion_3: -353719865
+      Death Explosion_4: 385494966
+      Death Explosion_5: -345308466
+      Death Explosion_6: -1608679836
+      Death Explosion_7: 1029825828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
