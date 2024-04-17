@@ -28,13 +28,24 @@ public class SlowEnemyScript : MonoBehaviour
             float curTime = 0; 
             
             while (curTime < interval) {
+                
                 curTime += Time.deltaTime; 
                 transform.position = Vector3.Lerp(start, newPos, curTime / interval);
+
+                // Animator control
+                Vector3 deltaPos = transform.position - start;
+                GetComponent<Animator>().SetFloat("Horizontal", deltaPos.x);
+                GetComponent<Animator>().SetFloat("Vertical", deltaPos.y);
+
                 yield return null; 
             }
+            // use newPos.x and .y to control animators
+            // Should be okay bc we aren't changing in more than one direction
+
 
             // ensure we are at the new position 
             transform.position = newPos; 
+
         }
     }
 
@@ -76,7 +87,6 @@ public class SlowEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
-            Debug.Log("hit explosion - destroying enemy");
         }
     }
 }
