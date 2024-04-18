@@ -95,9 +95,9 @@ public static class Globals
         Debug.Log("Next Level triggered");
         SoftReset();
         if(Level == 3){
-            Debug.Log("You win!!!!");
-            // TODO: If we are on the final level, load the final level dance party    
+            Debug.Log("You win!!!!");  
             SaveHighScore();
+            SceneManager.LoadScene("Victory Screen");
             return;
         }
         else{
