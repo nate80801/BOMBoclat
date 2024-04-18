@@ -5,7 +5,7 @@ using UnityEngine;
 public class FastEnemyScript : MonoBehaviour
 {
     private bool horizMovement, negMovement; 
-    [SerializeField] private float interval = 0.75f; 
+    [SerializeField] private float interval = 0.5f; 
     [SerializeField] private GameObject Box;
 
 
@@ -98,6 +98,8 @@ public class FastEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
+            Globals.IncreaseScore(100);
+            Debug.Log("hit explosion - destroying enemy");
         }
     }
 }

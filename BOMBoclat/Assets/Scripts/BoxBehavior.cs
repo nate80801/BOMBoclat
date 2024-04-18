@@ -63,7 +63,7 @@ public class BoxBehavior : MonoBehaviour
 
         // Instantiate objects here
         if(hidden_entity != null) overworldComponent.DelayedInstantiate(hidden_entity, transform.position,  Globals.blast_dissolve_time);
-        Globals.IncreaseScore(1);
+        Globals.IncreaseScore(5);
     }
 
 
