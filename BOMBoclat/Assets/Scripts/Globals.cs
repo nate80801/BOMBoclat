@@ -61,13 +61,14 @@ public static class Globals
     private static void ResetSpeed(){
         player_speed = DEFAULT_SPEED;
     }    
-
     private static void ResetBombCount(){
         current_bomb_count = DEFAULT_COUNT;
     }
     private static void ResetBlastRange(){
         blast_range = DEFAULT_RANGE;
     }
+
+    // Score
 
     // Level stuff
     // Levle naming standards: Level 1, Level 2, etc.
@@ -81,12 +82,12 @@ public static class Globals
     }
     
     
-    public static int Level = 1;
+    public static int Level = 0;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
-        // Load in level 1 with initial stats
+        // Load in level 0 with initial stats
         HardReset();
-        SceneManager.LoadScene("Level 1");
-        Level = 1;
+        SceneManager.LoadScene("Level 0");
+        Level = 0;
     }
 
     public static void NextLevel(){ // Call from prev level
