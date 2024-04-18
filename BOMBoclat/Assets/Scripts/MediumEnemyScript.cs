@@ -6,7 +6,7 @@ public class MediumEnemyScript : MonoBehaviour
 {
     private GameObject Player; 
     [SerializeField] private GameObject Box; 
-    [SerializeField] private float interval = 1.25f;
+    [SerializeField] private float interval = 1f;
 
 
     // Start is called before the first frame update
@@ -96,6 +96,8 @@ public class MediumEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
+            Globals.IncreaseScore(100);
+            Debug.Log("hit explosion - destroying enemy");
         }
     }
 

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerEvents : MonoBehaviour
 {
+
+    public AudioClip Game_Over;
 
     private SpriteRenderer spriteRenderer;
     private PlayerMovement playerMovement;
@@ -47,10 +50,11 @@ public class PlayerEvents : MonoBehaviour
             PowerComponent.Activate();
             Destroy(col.gameObject);
             
-            Globals.IncreaseScore(3);
+            Globals.IncreaseScore(10);
         }
         else if(col.gameObject.tag == "ExitDoor"){
             audioManager.PlaySFX(audioManager.Exit_Door);
+            Globals.IncreaseScore(1000);
             Globals.NextLevel();
         }
     }
@@ -80,6 +84,14 @@ public class PlayerEvents : MonoBehaviour
         if(Globals.player_lives == 0){
             Destroy(gameObject);
             Globals.HardReset();
+            Globals.SaveHighScore();
+            SceneManager.LoadScene("Game Over");
+
+            // plays game over audio
+            if(Game_Over != null)
+            {
+                audioManager.ChangeBGM(Game_Over);
+            }
         }
         else{
             StartCoroutine(DelayedRespawn());
@@ -93,6 +105,7 @@ public class PlayerEvents : MonoBehaviour
             // Game Over
             Destroy(gameObject);
             Debug.Log("Game Over!");
+            Globals.SaveHighScore();
             Globals.HardReset();
         }
         else{

@@ -11,6 +11,8 @@ public static class Globals
     public static AudioClip Level_1;
     public static AudioClip Level_2;
     public static AudioClip Level_3;
+    public static AudioClip Victory;
+    // public static AudioClip Game_Over;
 
     public static AudioManager audioManager;
 
@@ -62,6 +64,7 @@ public static class Globals
     public static int SCORE = 0;
     public static void IncreaseScore(int n){
         SCORE += n;
+        Debug.Log("new score: " + SCORE);
     }
 
 
@@ -144,9 +147,17 @@ public static class Globals
 
         Debug.Log("Next Level triggered");
         SoftReset();
-        if(Level == 3){ // We don't go to level 4 if we are on level 3
-            Debug.Log("You win!!!!");
-            // TODO: If we are on the final level, load the final level dance party    
+        if(Level == 3){
+            Debug.Log("You win!!!!");  
+            SaveHighScore();
+            SceneManager.LoadScene("Victory Screen");
+
+            // plays victory audio
+            if(Victory != null)
+            {
+                audioManager.ChangeBGM(Victory);
+            }
+
             return;
         }
         else{
@@ -194,7 +205,18 @@ public static class Globals
         ResetLives();
     }
 
-
+    // Used to save the player's high score after the game ends
+    public static void SaveHighScore() 
+    {
+        if (SCORE > PlayerPrefs.GetInt("highScore"))
+        {
+            PlayerPrefs.SetInt("highScore", SCORE);
+ 
+            // TODO: flash "new high score!" on screen? 
+           
+            Debug.Log("new high score set: " + PlayerPrefs.GetInt("highScore"));
+        } 
+    }
 
 
 
