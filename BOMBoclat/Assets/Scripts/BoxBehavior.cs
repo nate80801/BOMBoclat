@@ -18,12 +18,6 @@ public class BoxBehavior : MonoBehaviour
     [SerializeField] private GameObject medEnemyPrefab;
     [SerializeField] private GameObject fastEnemyPrefab;
 
-    AudioManager audioManager;
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
-
     private SpriteRenderer m_SpriteRenderer;
     private GameObject hidden_entity = null;
 
@@ -58,13 +52,8 @@ public class BoxBehavior : MonoBehaviour
         if(!this.gameObject.scene.isLoaded) return;
 
         overworldSpawnerObject = GameObject.FindGameObjectWithTag("OverworldSpawner");
-
-        // plays box breaking audio
-        //  FIX: change audio to a longer / more unique one
-        // audioManager.PlaySFX(audioManager.Box_Breaking);
         Overworld overworldComponent = overworldSpawnerObject.GetComponent<Overworld>();
-
-
+        
         Globals.WorldMap.Remove(transform.position);
         Debug.Log(hidden_entity);
 
