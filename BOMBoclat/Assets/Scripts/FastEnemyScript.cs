@@ -26,6 +26,8 @@ public class FastEnemyScript : MonoBehaviour
 
     // enemy movement 
     IEnumerator Move() {
+        yield return new WaitForSeconds(1);
+
         while (true) {
             Vector3 start = transform.position;
             Vector3 newPos = NextMove();
@@ -34,6 +36,11 @@ public class FastEnemyScript : MonoBehaviour
             while (curTime < interval) {
                 curTime += Time.deltaTime; 
                 transform.position = Vector3.Lerp(start, newPos, curTime / interval);
+
+                // Animator control
+                Vector3 deltaPos = transform.position - start;
+                GetComponent<Animator>().SetFloat("Horizontal", deltaPos.x);
+                GetComponent<Animator>().SetFloat("Vertical", deltaPos.y);
                 yield return null; 
             }
 
@@ -69,25 +76,22 @@ public class FastEnemyScript : MonoBehaviour
         if (!IsWalkable(newPos)) {
             horizMovement = !horizMovement; 
             newPos = CalculateNewPos();
-            Debug.Log("not walkable1. new pos: " + newPos); 
-       }
+        }
 
         // change movement direction (positive/negative)
-       if (!IsWalkable(newPos)) {
+        if (!IsWalkable(newPos)) {
             negMovement = !negMovement; 
             newPos = CalculateNewPos();
-            Debug.Log("not walkable2. new pos: " + newPos); 
-       }
+        }
 
         // change direction to the opposite of the original direction 
         if (!IsWalkable(newPos)) {
             horizMovement = !horizMovement; 
             newPos = CalculateNewPos();
-            Debug.Log("not walkable3. new pos: " + newPos); 
-       }
+        }
 
         // all directions are obstructed 
-       if (!IsWalkable(newPos))
+        if (!IsWalkable(newPos))
             return transform.position;
         
         return newPos; 
@@ -96,7 +100,7 @@ public class FastEnemyScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj) {
         if (obj.gameObject.tag == "Hostile") {
             GameObject.Destroy(gameObject);
-            Debug.Log("hit explosion - destroying enemy");
         }
     }
+
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d73e5ee1527e9e4582e7c9d7721daaa
+guid: 247b065f490306544968b0cca0f6a939
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2fbf40136ed4cd40ba84b208a0dc628
-      internalID: -2063311294
+      spriteID: c3c053b76d1b4f04ba8ba667e969f6d9
+      internalID: 476835451
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efd9be3502c94794f9a9088001515956
-      internalID: -367086899
+      spriteID: 0bc5048cf971f2a4eb0de49ed12dd1bb
+      internalID: -946810780
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9a2e7f2793a44743bace0abbe4db990
-      internalID: -587631606
+      spriteID: cb1c7404bb37ed048905011f883d7ae8
+      internalID: 1991692479
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbad3c5a6354d2e42bcc1473122df8cd
-      internalID: -1704245279
+      spriteID: 5a6306e125d7ae245ad7a72953a69db0
+      internalID: 1734328255
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bomb_0: -2063311294
-      Bomb_1: -367086899
-      Bomb_2: -587631606
-      Bomb_3: -1704245279
+      Bomb_0: 476835451
+      Bomb_1: -946810780
+      Bomb_2: 1991692479
+      Bomb_3: 1734328255
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

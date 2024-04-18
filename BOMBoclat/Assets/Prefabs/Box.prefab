@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7336020722249626304}
   - component: {fileID: 7761869675263095476}
   - component: {fileID: 7029021726133253383}
+  - component: {fileID: 1352425267548503802}
   m_Layer: 0
   m_Name: Box
   m_TagString: Box
@@ -30,11 +31,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 1, z: 0}
-  m_LocalScale: {x: 6.5, y: 6.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.1212121e+24}
 --- !u!212 &1022158019567332358
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec9fa0229718cbb49ac503f99382d5c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ca0d872ea4d37a4e8fd242a268366eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,18 +147,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0023816228, y: 0.001227811}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14281607, y: 0.13855729}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &7029021726133253383
 MonoBehaviour:
@@ -178,6 +179,32 @@ MonoBehaviour:
   slowEnemyPrefab: {fileID: 7820859177210169395, guid: 5d3ba826a60a8234691861eeaec7ea69, type: 3}
   medEnemyPrefab: {fileID: 6889630405071624724, guid: dba0dd4646d985b448b371cb568045a8, type: 3}
   fastEnemyPrefab: {fileID: 7964679413157489539, guid: 2b136cc74cd20124ca5ec8743b5f1cc7, type: 3}
-  slowPercentage: 45
-  medPercentage: 35
-  fastPercentage: 20
+  NormalBoxColors:
+  - {r: 1, g: 0.8000001, b: 0.43921572, a: 1}
+  - {r: 0.8156863, g: 0.9137255, b: 1, a: 1}
+  - {r: 0.90588236, g: 0.54509807, b: 0.54509807, a: 1}
+  EvilBoxColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.7294118, b: 0.7294118, a: 0.7372549}
+--- !u!95 &1352425267548503802
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254723224989292369}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eec6da966296c1a40911c9dab2d0a004, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
