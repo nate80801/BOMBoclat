@@ -11,6 +11,8 @@ public static class Globals
     public static AudioClip Level_1;
     public static AudioClip Level_2;
     public static AudioClip Level_3;
+    public static AudioClip Victory;
+    // public static AudioClip Game_Over;
 
     public static AudioManager audioManager;
 
@@ -117,6 +119,13 @@ public static class Globals
             Debug.Log("You win!!!!");  
             SaveHighScore();
             SceneManager.LoadScene("Victory Screen");
+
+            // plays victory audio
+            if(Victory != null)
+            {
+                audioManager.ChangeBGM(Victory);
+            }
+
             return;
         }
         else{

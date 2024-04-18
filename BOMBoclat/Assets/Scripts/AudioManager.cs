@@ -22,7 +22,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip Exit_Door;
     public AudioClip Player_Dying;
     public AudioClip Powerup;
-    public AudioClip Victory;
 
     // starts automatically
     void Start()

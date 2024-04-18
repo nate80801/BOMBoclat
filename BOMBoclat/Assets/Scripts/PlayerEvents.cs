@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PlayerEvents : MonoBehaviour
 {
 
+    public AudioClip Game_Over;
+
     private SpriteRenderer spriteRenderer;
     private PlayerMovement playerMovement;
 
@@ -83,6 +85,12 @@ public class PlayerEvents : MonoBehaviour
             Globals.HardReset();
             Globals.SaveHighScore();
             SceneManager.LoadScene("Game Over");
+
+            // plays game over audio
+            if(Game_Over != null)
+            {
+                audioManager.ChangeBGM(Game_Over);
+            }
         }
         else{
             StartCoroutine(DelayedRespawn());
