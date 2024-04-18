@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerEvents : MonoBehaviour
 {
@@ -80,6 +81,8 @@ public class PlayerEvents : MonoBehaviour
         if(Globals.player_lives == 0){
             Destroy(gameObject);
             Globals.HardReset();
+            Globals.SaveHighScore();
+            SceneManager.LoadScene("Game Over");
         }
         else{
             StartCoroutine(DelayedRespawn());
