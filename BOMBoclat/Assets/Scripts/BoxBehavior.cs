@@ -18,24 +18,46 @@ public class BoxBehavior : MonoBehaviour
     [SerializeField] private GameObject medEnemyPrefab;
     [SerializeField] private GameObject fastEnemyPrefab;
 
+
+    [Header("-----------Colors-----------")]
+    [SerializeField] Color[] NormalBoxColors;
+    [SerializeField] Color[] EvilBoxColors;
+
+
+
+
     private SpriteRenderer m_SpriteRenderer;
     private GameObject hidden_entity = null;
+
+    
+
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         Globals.WorldMap.Add(transform.position, gameObject);
 
+        if(Globals.Level == 3){
+            animator.SetBool("FinalLevel", true);
+        } 
+
+        m_SpriteRenderer.color =  NormalBoxColors[Globals.Level - 1];
+
         if(is_exit == true) return;
+
         
 
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
         if(Random.Range(0,100) < powerup_percentage){
             hidden_entity = powerup_Prefab;
         } 
         else if(Random.Range(0,100) < enemy_percentage){
-            GetComponent<Animator>().SetBool("EnemyHidden", true);
-            m_SpriteRenderer.color = Color.red;
+            animator.SetBool("EnemyHidden", true);
+            m_SpriteRenderer.color = EvilBoxColors[Globals.Level - 1];
+            
+
             int rand = Random.Range(0,100);
             // Roll for enemy type
             if(rand < Globals.slowPercentage) hidden_entity = slowEnemyPrefab;

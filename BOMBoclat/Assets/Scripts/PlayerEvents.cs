@@ -123,19 +123,23 @@ public class PlayerEvents : MonoBehaviour
         //spriteRenderer.enabled = false;
         isInvincible = true;
         //thisCollider.isTrigger = true;
+        GetComponent<BombSpawner>().enabled = false;
+
+
         thisCollider.enabled = false;
         thisRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
         playerMovement.enabled = false;
     }
 
     private IEnumerator UnVanish(){ // I'm too lazy to actually destroy the game object
+        GetComponent<BombSpawner>().enabled = true;
 
         //spriteRenderer.enabled = true;
         thisCollider.enabled = true;
         thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerMovement.enabled = true;
         
-        yield return new WaitForSeconds(Globals.explosion_delay_time * 2);
+        yield return new WaitForSeconds(Globals.explosion_delay_time * 1.5f);
         isInvincible = false;
         //thisCollider.isTrigger = false;
 

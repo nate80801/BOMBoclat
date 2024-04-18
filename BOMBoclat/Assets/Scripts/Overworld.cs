@@ -15,6 +15,8 @@ public class Overworld : MonoBehaviour
     [SerializeField] private GameObject enemySlowPrefab;
     [SerializeField] private GameObject enemyMediumPrefab;
     [SerializeField] private GameObject enemyFastPrefab;
+
+
     
 
 
@@ -27,9 +29,9 @@ public class Overworld : MonoBehaviour
     // Spawnzone
     [SerializeField] private int ExcludeZone; // Zone for spawn zone, no other entities will be spawned except for the player
 
-    // % of a game object in the world
 
-    // Make sure all percentages add up to less than 100, try to keep it under 50-60ish or else there's like no space at all
+
+
 
 
 
@@ -114,10 +116,11 @@ public class Overworld : MonoBehaviour
 
                 if(Random.Range(0,100) < Globals.enemyPercentage){
                     int rand = Random.Range(0,100);
+                    GameObject spawned;
                     // Roll for enemy type
-                    if(rand < Globals.slowPercentage) Instantiate(enemySlowPrefab, new Vector3(i,j), Quaternion.identity);
-                    else if(rand < Globals.medPercentage + Globals.slowPercentage) Instantiate(enemyMediumPrefab, new Vector3(i,j), Quaternion.identity);
-                    else if(rand < Globals.fastPercentage + Globals.slowPercentage + Globals.medPercentage) Instantiate(enemyFastPrefab, new Vector3(i,j), Quaternion.identity);
+                    if(rand < Globals.slowPercentage) spawned = Instantiate(enemySlowPrefab, new Vector3(i,j), Quaternion.identity);
+                    else if(rand < Globals.medPercentage + Globals.slowPercentage) spawned = Instantiate(enemyMediumPrefab, new Vector3(i,j), Quaternion.identity);
+                    else  spawned = Instantiate(enemyFastPrefab, new Vector3(i,j), Quaternion.identity);
 
                 }
             }
@@ -138,6 +141,8 @@ public class Overworld : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Instantiate(obj, pos, Quaternion.identity);
     }
+
+
 
 
 
