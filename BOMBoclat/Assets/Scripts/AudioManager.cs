@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         Globals.AudioManagerObject = gameObject;
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
         // FIX: make sure audio loops
 
         /*

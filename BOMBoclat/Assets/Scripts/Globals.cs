@@ -7,6 +7,18 @@ using UnityEngine.SceneManagement;
 
 public static class Globals
 {
+
+    public static AudioClip Level_1;
+    public static AudioClip Level_2;
+    public static AudioClip Level_3;
+
+    public static AudioManager audioManager;
+
+    public static void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Constant gameplay quantities
     public static int explosion_delay_time = 2; //Seconds it takes for a bomb to explode
     public static float blast_dissolve_time = .25f; // how long it takes for the smoke to clear from the explosion
@@ -83,6 +95,13 @@ public static class Globals
     
     public static int Level = 0;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
+        
+        // plays level 1 audio
+        if(Level_1 != null && Level == 0)
+        {
+            audioManager.ChangeBGM(Level_1);
+        }
+        
         // Load in level 0 with initial stats
         HardReset();
         SceneManager.LoadScene("Level 0");
@@ -102,6 +121,19 @@ public static class Globals
             // Advance to next level
             // TODO: Increase difficulty by increasing enemy count, hidden enemy probability, etc.
             Level += 1;
+
+            // plays level 2 audio
+            if(Level_2 != null && Level == 1)
+            {
+                audioManager.ChangeBGM(Level_2);
+            }
+
+            // plays level 3 audio
+            else if(Level_3 != null && Level == 2)
+            {
+                audioManager.ChangeBGM(Level_3);
+            }
+
             SceneManager.LoadScene("Level " + (Level));
         }
     }
