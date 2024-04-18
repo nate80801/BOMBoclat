@@ -27,13 +27,19 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         // FIX: make sure audio loops
 
-        musicSource.clip = Gameplay; 
+        musicSource.clip = Main_Menu; 
         musicSource.Play();  
     }
+
 
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void PlayMusic(AudioClip song){
+        musicSource.clip = song;
+        musicSource.Play();
     }
 
 

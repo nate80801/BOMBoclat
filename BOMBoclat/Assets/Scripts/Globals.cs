@@ -101,15 +101,18 @@ public static class Globals
     // Level stuff
     // Levle naming standards: Level 1, Level 2, etc.
     public static GameObject AudioManagerObject; // AudioManager.cs sets itself here in Start()
+    public static AudioManager audioManagerComponent;
     public static void LoadScene(string sceneName){
         // Stop SFX
+        audioManagerComponent = AudioManagerObject.GetComponent<AudioManager>();
         AudioSource SFX = AudioManagerObject.transform.Find("SFX").gameObject.GetComponent<AudioSource>();
         // SFX.Stop();
-        AudioManagerObject.GetComponent<AudioManager>().enabled = false;
+        audioManagerComponent.enabled = false;
         SceneManager.LoadScene(sceneName);
-        AudioManagerObject.GetComponent<AudioManager>().enabled = true;
+        audioManagerComponent.enabled = true;
         // SFX.Play();
     }
+
     
     
     public static int Level = 0;
@@ -117,7 +120,8 @@ public static class Globals
         // Load in level 0 with initial stats
         HardReset();
         ResetDifficulty();
-        SceneManager.LoadScene("Level 1");
+        LoadScene("Level 1");
+        audioManagerComponent.PlayMusic(audioManagerComponent.Gameplay);
         Level = 1;
     }
 
@@ -134,10 +138,12 @@ public static class Globals
             // Advance to next level
             // TODO: Increase difficulty by increasing enemy count, hidden enemy probability, etc.
             Level += 1;
-            SceneManager.LoadScene("Level " + (Level));
+            LoadScene("Level " + (Level));
             IncreaseDifficulty();
         }
     }
+
+    public static void LoseGame(){}
 
     // Used for when we clear a level, moving on to the next map
     public static void SoftReset(){
@@ -156,6 +162,8 @@ public static class Globals
         MediumReset();
         ResetLives();
     }
+
+
 
 
 

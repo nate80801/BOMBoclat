@@ -13,7 +13,6 @@ public class BombBehavior : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    private bool triggered = false;
     // Start is called before the first frame update
     void Start()
     {
