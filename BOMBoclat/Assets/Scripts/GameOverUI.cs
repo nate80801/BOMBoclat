@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
 using TMPro;
 
 public class GameOverUI : MonoBehaviour
@@ -20,11 +19,5 @@ public class GameOverUI : MonoBehaviour
 
         highScoreText = highScore.GetComponent<TextMeshProUGUI>();
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
