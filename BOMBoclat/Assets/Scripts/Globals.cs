@@ -98,7 +98,6 @@ public static class Globals
     public static int Level = 0;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
         
-        // NEED TO FIX
         // fades to level 1 scene
         levelLoader.LoadNextLevel("Level 1");
 
@@ -153,7 +152,10 @@ public static class Globals
             }
 
             // SceneManager.LoadScene("Level " + (Level));
-            levelLoader.LoadNextLevel("Level " + (Level));
+            if(Level < 3)
+            {
+                levelLoader.LoadNextLevel("Level " + (Level + 1));
+            }
         }
     }
 
