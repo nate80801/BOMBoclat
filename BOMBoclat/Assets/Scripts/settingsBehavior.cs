@@ -21,7 +21,7 @@ public class settingsBehavior : MonoBehaviour
 
     public void SaveSoundSettings()
     {
-        PlayerPrefs.SetFloat()
+        
     }
     // Update is called once per frame
     void Update()
