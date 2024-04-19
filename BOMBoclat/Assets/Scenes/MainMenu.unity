@@ -1016,6 +1016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVol: {fileID: 1070562154}
   masterAudioMixer: {fileID: 24100000, guid: b79b8206cfaed844bb34c7f2d9befe4d, type: 2}
+  masterFloat: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVol: {fileID: 0}
   masterAudioMixer: {fileID: 0}
+  masterFloat: 0
 --- !u!1 &1105803196
 GameObject:
   m_ObjectHideFlags: 0
