@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Audio;
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+public void PlayGame()
     {
-        Globals.StartGame();
+        Globals.NextLevel();
         // SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

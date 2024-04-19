@@ -17,52 +17,34 @@ public class BoxBehavior : MonoBehaviour
     [SerializeField] private GameObject slowEnemyPrefab;
     [SerializeField] private GameObject medEnemyPrefab;
     [SerializeField] private GameObject fastEnemyPrefab;
-
-
-    [Header("-----------Colors-----------")]
-    [SerializeField] Color[] NormalBoxColors;
-    [SerializeField] Color[] EvilBoxColors;
-
-
-
+    // Percentages, try to make it match overworld.cs
+    [SerializeField] private int slowPercentage = 45;
+    [SerializeField] private int medPercentage = 35;
+    [SerializeField] private int fastPercentage = 20;
 
     private SpriteRenderer m_SpriteRenderer;
     private GameObject hidden_entity = null;
 
-    
-
-    Animator animator;
-
     // Start is called before the first frame update
     void Start()
     {
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
         Globals.WorldMap.Add(transform.position, gameObject);
 
-        if(Globals.Level == 3){
-            animator.SetBool("FinalLevel", true);
-        } 
-
-        m_SpriteRenderer.color =  NormalBoxColors[Globals.Level - 1];
-
         if(is_exit == true) return;
-
         
 
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
         if(Random.Range(0,100) < powerup_percentage){
             hidden_entity = powerup_Prefab;
         } 
         else if(Random.Range(0,100) < enemy_percentage){
-            animator.SetBool("EnemyHidden", true);
-            m_SpriteRenderer.color = EvilBoxColors[Globals.Level - 1];
-            
-
+            GetComponent<Animator>().SetBool("EnemyHidden", true);
+            m_SpriteRenderer.color = Color.red;
             int rand = Random.Range(0,100);
             // Roll for enemy type
-            if(rand < Globals.slowPercentage) hidden_entity = slowEnemyPrefab;
-            else if(rand < Globals.medPercentage + Globals.slowPercentage) hidden_entity = medEnemyPrefab;
-            else if(rand < Globals.fastPercentage + Globals.slowPercentage + Globals.medPercentage) hidden_entity = fastEnemyPrefab;
+            if(rand < slowPercentage) hidden_entity = slowEnemyPrefab;
+            else if(rand < medPercentage + slowPercentage) hidden_entity = medEnemyPrefab;
+            else if(rand < fastPercentage + slowPercentage + medPercentage) hidden_entity = fastEnemyPrefab;
             
         }
     }
