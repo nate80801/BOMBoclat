@@ -26,8 +26,6 @@ public class FastEnemyScript : MonoBehaviour
 
     // enemy movement 
     IEnumerator Move() {
-        yield return new WaitForSeconds(1);
-
         while (true) {
             Vector3 start = transform.position;
             Vector3 newPos = NextMove();
@@ -76,22 +74,22 @@ public class FastEnemyScript : MonoBehaviour
         if (!IsWalkable(newPos)) {
             horizMovement = !horizMovement; 
             newPos = CalculateNewPos();
-        }
+       }
 
         // change movement direction (positive/negative)
-        if (!IsWalkable(newPos)) {
+       if (!IsWalkable(newPos)) {
             negMovement = !negMovement; 
             newPos = CalculateNewPos();
-        }
+       }
 
         // change direction to the opposite of the original direction 
         if (!IsWalkable(newPos)) {
             horizMovement = !horizMovement; 
             newPos = CalculateNewPos();
-        }
+       }
 
         // all directions are obstructed 
-        if (!IsWalkable(newPos))
+       if (!IsWalkable(newPos))
             return transform.position;
         
         return newPos; 
@@ -104,5 +102,4 @@ public class FastEnemyScript : MonoBehaviour
             Debug.Log("hit explosion - destroying enemy");
         }
     }
-
 }
