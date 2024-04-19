@@ -26,4 +26,8 @@ public void PlayGame()
         Application.Quit();
     }
 
+    public void GoInstructions()
+    {
+        SceneManager.LoadScene("Instructions");
+    }
 }
