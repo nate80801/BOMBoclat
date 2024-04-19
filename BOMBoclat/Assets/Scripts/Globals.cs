@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
 public static class Globals
 {
 
@@ -14,6 +12,7 @@ public static class Globals
     public static AudioClip Victory;
     // public static AudioClip Game_Over;
 
+    public static LevelLoader levelLoader;
     public static AudioManager audioManager;
 
     public static void Awake()
@@ -99,6 +98,10 @@ public static class Globals
     public static int Level = 0;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
         
+        // NEED TO FIX
+        // fades to level 1 scene
+        levelLoader.LoadNextLevel("Level 1");
+
         // plays level 1 audio
         if(Level_1 != null && Level == 0)
         {
@@ -107,7 +110,7 @@ public static class Globals
         
         // Load in level 0 with initial stats
         HardReset();
-        SceneManager.LoadScene("Level 0");
+        // SceneManager.LoadScene("Level 0");
         Level = 0;
     }
 
@@ -119,6 +122,10 @@ public static class Globals
             Debug.Log("You win!!!!");  
             SaveHighScore();
             SceneManager.LoadScene("Victory Screen");
+
+            // NEED TO FIX
+            // fades to victory scene
+            levelLoader.LoadNextLevel("Victory Screen");
 
             // plays victory audio
             if(Victory != null)
@@ -133,19 +140,20 @@ public static class Globals
             // TODO: Increase difficulty by increasing enemy count, hidden enemy probability, etc.
             Level += 1;
 
-            // plays level 2 audio
             if(Level_2 != null && Level == 1)
             {
+                // plays level 2 audio
                 audioManager.ChangeBGM(Level_2);
             }
 
-            // plays level 3 audio
             else if(Level_3 != null && Level == 2)
             {
+                // plays level 3 audio
                 audioManager.ChangeBGM(Level_3);
             }
 
-            SceneManager.LoadScene("Level " + (Level));
+            // SceneManager.LoadScene("Level " + (Level));
+            levelLoader.LoadNextLevel("Level " + (Level));
         }
     }
 

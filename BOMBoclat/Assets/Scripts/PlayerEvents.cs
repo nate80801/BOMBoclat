@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerEvents : MonoBehaviour
 {
-
+    public LevelLoader levelLoader;
     public AudioClip Game_Over;
 
     private SpriteRenderer spriteRenderer;
@@ -84,7 +84,11 @@ public class PlayerEvents : MonoBehaviour
             Destroy(gameObject);
             Globals.HardReset();
             Globals.SaveHighScore();
-            SceneManager.LoadScene("Game Over");
+            // SceneManager.LoadScene("Game Over");
+
+            // NEED TO FIX
+            // fades to game over scene
+            levelLoader.LoadNextLevel("Game Over");
 
             // plays game over audio
             if(Game_Over != null)
