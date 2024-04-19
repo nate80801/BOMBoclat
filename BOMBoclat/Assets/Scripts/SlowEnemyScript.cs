@@ -22,6 +22,8 @@ public class SlowEnemyScript : MonoBehaviour
     }
 
     IEnumerator Move() {
+        yield return new WaitForSeconds(1);
+
         while (true) {
             Vector3 start = transform.position;
             Vector3 newPos = NextMove();
@@ -91,4 +93,8 @@ public class SlowEnemyScript : MonoBehaviour
             Debug.Log("hit explosion - destroying enemy");
         }
     }
+
+
+    
+
 }

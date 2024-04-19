@@ -21,11 +21,41 @@ public static class Globals
     }
 
     // Constant gameplay quantities
-    public static int explosion_delay_time = 2; //Seconds it takes for a bomb to explode
+    public static int explosion_delay_time = 3; //Seconds it takes for a bomb to explode
     public static float blast_dissolve_time = .25f; // how long it takes for the smoke to clear from the explosion
 
     // Map stuff
     public static Dictionary<Vector3, GameObject> WorldMap = new Dictionary<Vector3, GameObject>();
+    
+    public static int boxPercentage = 20; // Percent of boxes in the map
+    public static int wallPercentage = 20; //Percentage of walls in the map
+
+    public static int enemyPercentage = 5; 
+    // Enemy percentages, make sure they add to 100
+    public static int slowPercentage = 45;
+
+    public static int medPercentage = 35;
+    public static int fastPercentage = 20;
+
+    public static void ResetDifficulty(){
+        boxPercentage = 20;
+        wallPercentage = 20;
+        enemyPercentage = 10; 
+
+        slowPercentage = 45;
+        medPercentage = 35;
+        fastPercentage = 20;
+    }
+
+    public static void IncreaseDifficulty(){
+        boxPercentage += 15;
+        wallPercentage += 20;
+        enemyPercentage += 15;
+
+        slowPercentage -= 15;
+        medPercentage += 10;
+        fastPercentage += 5;
+    }
     
 
 
@@ -44,7 +74,6 @@ public static class Globals
     public static int blast_range = 1;
 
     // Default player stats
-
     private static int DEFAULT_LIVES = player_lives;
     private static float DEFAULT_SPEED = player_speed;
     private static int DEFAULT_COUNT = current_bomb_count;
@@ -86,17 +115,20 @@ public static class Globals
     // Level stuff
     // Levle naming standards: Level 1, Level 2, etc.
     public static GameObject AudioManagerObject; // AudioManager.cs sets itself here in Start()
+    
     public static void LoadScene(string sceneName){
         // Stop SFX
         AudioSource SFX = AudioManagerObject.transform.Find("SFX").gameObject.GetComponent<AudioSource>();
         SFX.Stop();
         SceneManager.LoadScene(sceneName);
-        SFX.Play();
+        // SFX.Play();
     }
+
     
     
-    public static int Level = 0;
+    public static int Level = 1;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
+        Level = 1;
         
         // fades to level 1 scene
         levelLoader.LoadNextLevel("Level 1");
@@ -153,6 +185,7 @@ public static class Globals
                 // plays level 3 audio
                 audioManager.ChangeBGM(Level_3);
             }
+            LoadScene("Level " + (Level));
 
             // SceneManager.LoadScene("Level " + (Level));
             if(Level < 4)
@@ -161,6 +194,8 @@ public static class Globals
             }
         }
     }
+
+    public static void LoseGame(){}
 
     // Used for when we clear a level, moving on to the next map
     public static void SoftReset(){
@@ -192,6 +227,10 @@ public static class Globals
             Debug.Log("new high score set: " + PlayerPrefs.GetInt("highScore"));
         } 
     }
+
+
+
+
 
 
 
