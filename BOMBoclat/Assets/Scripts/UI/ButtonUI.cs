@@ -1,18 +1,44 @@
+/**********************************************
+
+Script controlling all scene changes made from UI.
+
+**********************************************/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class GameOverButtons : MonoBehaviour
 {
-    public void toMainMenu() 
+    public void ToMainMenu() 
     {
-        Debug.Log("main menu button clicked");
+        Debug.Log("switching to main menu scene");
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void toNewGame() 
+    public void ToNewGame() 
     {
-        Debug.Log("new game button clicked");
-        SceneManager.LoadScene("Level 1");
+        Debug.Log("starting new game");
+        Globals.StartGame(); 
+    }
+
+    public void ToSettings()
+    {
+        Debug.Log("switching to settings scene");
+        SceneManager.LoadScene("SettingsMenu");
+    }
+
+    public void toInstructions() 
+    {
+        Debug.Log("switching to instructions scene");
+        SceneManager.LoadScene("Instructions");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("exiting game");
+        Application.Quit();
     }
 }
