@@ -179,9 +179,14 @@ MonoBehaviour:
   slowEnemyPrefab: {fileID: 7820859177210169395, guid: 5d3ba826a60a8234691861eeaec7ea69, type: 3}
   medEnemyPrefab: {fileID: 6889630405071624724, guid: dba0dd4646d985b448b371cb568045a8, type: 3}
   fastEnemyPrefab: {fileID: 7964679413157489539, guid: 2b136cc74cd20124ca5ec8743b5f1cc7, type: 3}
-  slowPercentage: 45
-  medPercentage: 35
-  fastPercentage: 20
+  NormalBoxColors:
+  - {r: 1, g: 0.8000001, b: 0.43921572, a: 1}
+  - {r: 0.8156863, g: 0.9137255, b: 1, a: 1}
+  - {r: 0.90588236, g: 0.54509807, b: 0.54509807, a: 1}
+  EvilBoxColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.7294118, b: 0.7294118, a: 0.7372549}
 --- !u!95 &1352425267548503802
 Animator:
   serializedVersion: 5

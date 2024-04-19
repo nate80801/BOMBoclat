@@ -10,6 +10,7 @@ public class PlayerEvents : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private PlayerMovement playerMovement;
+    private bool isInvincible = false;
 
     AudioManager audioManager;
     Overworld overworldComponent;
@@ -42,7 +43,7 @@ public class PlayerEvents : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col){
         Debug.Log(col.gameObject.name + " : " + gameObject.name);
         if(col.gameObject.tag == "Hostile"){
-            Die();
+            if(!isInvincible) Die();
         }
         else if(col.gameObject.tag == "PowerUp"){
             PowerUpBehavior PowerComponent = col.gameObject.GetComponent<PowerUpBehavior>();
@@ -60,7 +61,8 @@ public class PlayerEvents : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag == "Hostile"){
-            Die();
+            if(!isInvincible) Die();
+
         }
     }
 
@@ -73,7 +75,6 @@ public class PlayerEvents : MonoBehaviour
     }
 
     private void Die(){ 
-
         // plays player dying audio
         audioManager.PlaySFX(audioManager.Player_Dying);
 
@@ -118,12 +119,13 @@ public class PlayerEvents : MonoBehaviour
 
 
         yield return new WaitForSeconds(Globals.explosion_delay_time);
-        Globals.MediumReset();
 
         // Re enable the player
         transform.position = new Vector3(0, 0);
-        UnVanish();
+        StartCoroutine(UnVanish());
         animator.SetBool("IsDead" , false);
+        Globals.MediumReset();
+
 
 
 
@@ -132,20 +134,28 @@ public class PlayerEvents : MonoBehaviour
 
     private void Vanish(){
         //spriteRenderer.enabled = false;
-        thisCollider.enabled = false;
+        isInvincible = true;
+        //thisCollider.isTrigger = true;
+        GetComponent<BombSpawner>().enabled = false;
 
+
+        thisCollider.enabled = false;
         thisRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
         playerMovement.enabled = false;
     }
 
-    private void UnVanish(){ // I'm too lazy to actually destroy the game object
+    private IEnumerator UnVanish(){ // I'm too lazy to actually destroy the game object
+        GetComponent<BombSpawner>().enabled = true;
 
         //spriteRenderer.enabled = true;
         thisCollider.enabled = true;
-
         thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerMovement.enabled = true;
         
+        yield return new WaitForSeconds(Globals.explosion_delay_time * 1.5f);
+        isInvincible = false;
+        //thisCollider.isTrigger = false;
+
     }
 
     void Respawn(){

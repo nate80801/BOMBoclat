@@ -18,6 +18,8 @@ public class MediumEnemyScript : MonoBehaviour
     }
 
     IEnumerator Move() {
+        yield return new WaitForSeconds(1);
+
         while (true) {
             Vector3 start = transform.position;
             Vector3 newPos = NextMove(Player.transform.position, transform.position);
@@ -104,5 +106,7 @@ public class MediumEnemyScript : MonoBehaviour
             col.isTrigger = false;
         }
     }
+
+
 
 }
