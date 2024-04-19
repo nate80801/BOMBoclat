@@ -30,7 +30,7 @@ public class GameOverButtons : MonoBehaviour
         SceneManager.LoadScene("SettingsMenu");
     }
 
-    public void toInstructions() 
+    public void ToInstructions() 
     {
         Debug.Log("switching to instructions scene");
         SceneManager.LoadScene("Instructions");

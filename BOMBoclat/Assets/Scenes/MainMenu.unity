@@ -1121,6 +1121,7 @@ GameObject:
   - component: {fileID: 626718300}
   - component: {fileID: 626718299}
   - component: {fileID: 626718298}
+  - component: {fileID: 626718301}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1178,6 +1179,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626718301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626718297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5086da9602800a749a47908e58fa1efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &746151900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1338,6 @@ MonoBehaviour:
   Exit_Door: {fileID: 8300000, guid: 80169924e4d4e72439529573a287db6a, type: 3}
   Player_Dying: {fileID: 8300000, guid: 7883bcd01e6e2d149962368012d62f34, type: 3}
   Powerup: {fileID: 8300000, guid: 2621c265d1248d849b36b3a029bec62d, type: 3}
-  Victory: {fileID: 8300000, guid: e42747e6172fcba4f80663ae53d9bd65, type: 3}
 --- !u!4 &1020905828
 Transform:
   m_ObjectHideFlags: 0
@@ -2302,8 +2314,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2035969621}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 626718301}
+        m_TargetAssemblyTypeName: GameOverButtons, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -2486,9 +2498,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2035969621}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 626718301}
+        m_TargetAssemblyTypeName: GameOverButtons, Assembly-CSharp
+        m_MethodName: ToInstructions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

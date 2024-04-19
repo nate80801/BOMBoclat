@@ -208,7 +208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1486626248}
         m_TargetAssemblyTypeName: GameOverButtons, Assembly-CSharp
-        m_MethodName: toMainMenu
+        m_MethodName: ToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1158,7 +1158,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1486626248}
         m_TargetAssemblyTypeName: GameOverButtons, Assembly-CSharp
-        m_MethodName: toNewGame
+        m_MethodName: ToNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
