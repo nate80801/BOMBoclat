@@ -86,6 +86,7 @@ public class PlayerEvents : MonoBehaviour
             Globals.SaveHighScore();
             SceneManager.LoadScene("Game Over");
 
+            // levelLoader.LoadNextLevel("Game Over");
             
             // plays game over audio
             if(Game_Over != null)

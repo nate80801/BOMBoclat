@@ -102,7 +102,7 @@ public static class Globals
         levelLoader.LoadNextLevel("Level 1");
 
         // plays level 1 audio
-        if(Level_1 != null && Level == 0)
+        if(Level_1 != null && Level == 1)
         {
             audioManager.ChangeBGM(Level_1);
         }
@@ -110,17 +110,20 @@ public static class Globals
         // Load in level 0 with initial stats
         HardReset();
         // SceneManager.LoadScene("Level 0");
-        Level = 0;
+        Level = 1;
     }
 
     public static void NextLevel(){ // Call from prev level
 
         Debug.Log("Next Level triggered");
         SoftReset();
-        if(Level == 3){
+
+        Level += 1;
+
+        if(Level == 4){
             Debug.Log("You win!!!!");  
             SaveHighScore();
-            SceneManager.LoadScene("Victory Screen");
+            // SceneManager.LoadScene("Victory Screen");
 
             // NEED TO FIX
             // fades to victory scene
@@ -137,24 +140,24 @@ public static class Globals
         else{
             // Advance to next level
             // TODO: Increase difficulty by increasing enemy count, hidden enemy probability, etc.
-            Level += 1;
+            // Level += 1;
 
-            if(Level_2 != null && Level == 1)
+            if(Level_2 != null && Level == 2 )
             {
                 // plays level 2 audio
                 audioManager.ChangeBGM(Level_2);
             }
 
-            else if(Level_3 != null && Level == 2)
+            else if(Level_3 != null && Level == 3)
             {
                 // plays level 3 audio
                 audioManager.ChangeBGM(Level_3);
             }
 
             // SceneManager.LoadScene("Level " + (Level));
-            if(Level < 3)
+            if(Level < 4)
             {
-                levelLoader.LoadNextLevel("Level " + (Level + 1));
+                levelLoader.LoadNextLevel("Level " + (Level));
             }
         }
     }
