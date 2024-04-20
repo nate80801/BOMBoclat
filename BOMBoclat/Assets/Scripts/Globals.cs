@@ -214,6 +214,7 @@ public static class Globals
     public static void HardReset(){
         MediumReset();
         ResetLives();
+        
     }
 
     // Used to save the player's high score after the game ends

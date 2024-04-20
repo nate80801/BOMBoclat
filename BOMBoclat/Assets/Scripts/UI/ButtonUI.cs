@@ -18,7 +18,7 @@ public class GameOverButtons : MonoBehaviour
     public void toNewGame() 
     {
         Debug.Log("new game button clicked");
-        SceneManager.LoadScene("Level 1");
+        Globals.StartGame();
         // levelLoader.LoadNextLevel("Level 1");
     }
 }

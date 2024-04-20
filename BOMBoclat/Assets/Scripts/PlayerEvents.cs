@@ -85,6 +85,7 @@ public class PlayerEvents : MonoBehaviour
         animator.SetBool("IsDead", true);
         Globals.DecrementLives();
         if(Globals.player_lives == 0){
+            Globals.Level = 1;
             Destroy(gameObject);
             Globals.HardReset();
             Globals.SaveHighScore();
