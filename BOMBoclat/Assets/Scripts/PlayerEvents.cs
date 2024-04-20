@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerEvents : MonoBehaviour
 {
-
+    public LevelLoader levelLoader;
     public AudioClip Game_Over;
 
     private SpriteRenderer spriteRenderer;
@@ -53,7 +53,10 @@ public class PlayerEvents : MonoBehaviour
             Globals.IncreaseScore(10);
         }
         else if(col.gameObject.tag == "ExitDoor"){
+
+            // plays exit door audio
             audioManager.PlaySFX(audioManager.Exit_Door);
+            
             Globals.IncreaseScore(1000);
             Globals.NextLevel();
         }
@@ -87,11 +90,17 @@ public class PlayerEvents : MonoBehaviour
             Globals.SaveHighScore();
             SceneManager.LoadScene("Game Over");
 
+            // levelLoader.LoadNextLevel("Game Over");
+            
             // plays game over audio
             if(Game_Over != null)
             {
                 audioManager.ChangeBGM(Game_Over);
             }
+
+            // NEED TO FIX
+            // fades to game over scene
+            // levelLoader.LoadNextLevel("Game Over");
         }
         else{
             StartCoroutine(DelayedRespawn());

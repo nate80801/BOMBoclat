@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
 public static class Globals
 {
 
@@ -14,6 +12,7 @@ public static class Globals
     public static AudioClip Victory;
     // public static AudioClip Game_Over;
 
+    public static LevelLoader levelLoader;
     public static AudioManager audioManager;
 
     public static void Awake()
@@ -131,6 +130,9 @@ public static class Globals
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
         Level = 1;
         
+        // fades to level 1 scene
+        levelLoader.LoadNextLevel("Level 1");
+
         // plays level 1 audio
         if(Level_1 != null && Level == 1)
         {
@@ -139,18 +141,25 @@ public static class Globals
         
         // Load in level 0 with initial stats
         HardReset();
-        ResetDifficulty();
-        LoadScene("Level 1");
+        // SceneManager.LoadScene("Level 0");
+        // Level = 1;
     }
 
     public static void NextLevel(){ // Call from prev level
 
         Debug.Log("Next Level triggered");
         SoftReset();
-        if(Level == 3){
+
+        Level += 1;
+
+        if(Level == 4){
             Debug.Log("You win!!!!");  
             SaveHighScore();
-            SceneManager.LoadScene("Victory Screen");
+            // SceneManager.LoadScene("Victory Screen");
+
+            // NEED TO FIX
+            // fades to victory scene
+            levelLoader.LoadNextLevel("Victory Screen"); 
 
             // plays victory audio
             if(Victory != null)
@@ -163,25 +172,27 @@ public static class Globals
         else{
             // Advance to next level
             // TODO: Increase difficulty by increasing enemy count, hidden enemy probability, etc.
-            Level += 1;
-            IncreaseDifficulty();
+            // Level += 1;
 
-            // plays level 2 audio
-            
-            if(Level_2 != null && Level == 2)
+            if(Level_2 != null && Level == 2 )
             {
+                // plays level 2 audio
                 audioManager.ChangeBGM(Level_2);
             }
 
-            // plays level 3 audio
             else if(Level_3 != null && Level == 3)
             {
+                // plays level 3 audio
                 audioManager.ChangeBGM(Level_3);
             }
-            LoadScene("Level " + (Level));
-
             
+            //LoadScene("Level " + (Level));
 
+            // SceneManager.LoadScene("Level " + (Level));
+            if(Level < 4)
+            {
+                levelLoader.LoadNextLevel("Level " + (Level));
+            }
         }
     }
 
