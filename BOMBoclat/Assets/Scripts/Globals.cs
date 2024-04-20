@@ -142,7 +142,7 @@ public static class Globals
         // Load in level 0 with initial stats
         HardReset();
         // SceneManager.LoadScene("Level 0");
-        Level = 1;
+        // Level = 1;
     }
 
     public static void NextLevel(){ // Call from prev level
@@ -159,7 +159,7 @@ public static class Globals
 
             // NEED TO FIX
             // fades to victory scene
-            levelLoader.LoadNextLevel("Victory Screen");
+            levelLoader.LoadNextLevel("Victory Screen"); 
 
             // plays victory audio
             if(Victory != null)
@@ -185,7 +185,8 @@ public static class Globals
                 // plays level 3 audio
                 audioManager.ChangeBGM(Level_3);
             }
-            LoadScene("Level " + (Level));
+            
+            //LoadScene("Level " + (Level));
 
             // SceneManager.LoadScene("Level " + (Level));
             if(Level < 4)

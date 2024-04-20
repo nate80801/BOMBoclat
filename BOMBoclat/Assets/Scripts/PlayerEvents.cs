@@ -53,7 +53,10 @@ public class PlayerEvents : MonoBehaviour
             Globals.IncreaseScore(10);
         }
         else if(col.gameObject.tag == "ExitDoor"){
+
+            // plays exit door audio
             audioManager.PlaySFX(audioManager.Exit_Door);
+            
             Globals.IncreaseScore(1000);
             Globals.NextLevel();
         }
