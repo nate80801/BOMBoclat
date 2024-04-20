@@ -82,6 +82,7 @@ public class PlayerEvents : MonoBehaviour
         audioManager.PlaySFX(audioManager.Player_Dying);
 
         Vanish();
+
         animator.SetBool("IsDead", true);
         Globals.DecrementLives();
         if(Globals.player_lives == 0){
@@ -127,7 +128,7 @@ public class PlayerEvents : MonoBehaviour
 
     private IEnumerator DelayedRespawn(){
 
-
+        
         yield return new WaitForSeconds(Globals.explosion_delay_time);
 
         // Re enable the player
@@ -162,8 +163,16 @@ public class PlayerEvents : MonoBehaviour
         thisRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerMovement.enabled = true;
         
+        Color spriteColor = spriteRenderer.color;
+        spriteColor.a = .50f;
+        spriteRenderer.color = spriteColor;
+
         yield return new WaitForSeconds(Globals.explosion_delay_time * 1.5f);
         isInvincible = false;
+
+        spriteColor.a = 1f;
+        spriteRenderer.color = spriteColor;
+        
         //thisCollider.isTrigger = false;
 
     }

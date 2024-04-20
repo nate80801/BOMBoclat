@@ -939,7 +939,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5086da9602800a749a47908e58fa1efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoader: {fileID: 0}
+  levelLoader: {fileID: 1501895688}
+--- !u!114 &1501895688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1743986287217897781, guid: 191c7524d82b03448840a8c47f413d37, type: 3}
+  m_PrefabInstance: {fileID: 1849998890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36a95f074fe441458c17cc2f803d7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1541536732
 GameObject:
   m_ObjectHideFlags: 0
