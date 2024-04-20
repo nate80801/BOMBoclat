@@ -11,14 +11,15 @@ public class GameOverButtons : MonoBehaviour
     public void toMainMenu() 
     {
         Debug.Log("main menu button clicked");
-        SceneManager.LoadScene("MainMenu");
-        // levelLoader.LoadNextLevel("MainMenu");
+        // SceneManager.LoadScene("MainMenu");
+        levelLoader.LoadNextLevel("MainMenu");
     }
 
     public void toNewGame() 
     {
         Debug.Log("new game button clicked");
         Globals.StartGame();
+        
         // levelLoader.LoadNextLevel("Level 1");
     }
 }

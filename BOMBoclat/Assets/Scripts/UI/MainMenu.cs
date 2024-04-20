@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        Globals.StartGame();
+        GoInstructions();
+        // Globals.StartGame();
         // SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
