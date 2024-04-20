@@ -9,6 +9,8 @@ public class StatsUI : MonoBehaviour
 {
     public TextMeshPro Bomb;
     public TextMeshPro Score;
+    public TextMeshPro Lives;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +22,7 @@ public class StatsUI : MonoBehaviour
     {
         Bomb.text = "" + Globals.current_bomb_count;
         Score.text = "" + Globals.SCORE;
+        Lives.text = "" + Globals.player_lives;
+
     }
 }

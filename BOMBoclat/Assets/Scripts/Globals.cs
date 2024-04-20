@@ -27,10 +27,10 @@ public static class Globals
     // Map stuff
     public static Dictionary<Vector3, GameObject> WorldMap = new Dictionary<Vector3, GameObject>();
     
-    public static int boxPercentage = 20; // Percent of boxes in the map
-    public static int wallPercentage = 20; //Percentage of walls in the map
+    public static int boxPercentage = 25; // Percent of boxes in the map
+    public static int wallPercentage = 25; //Percentage of walls in the map
 
-    public static int enemyPercentage = 5; 
+    public static int enemyPercentage = 4; 
     // Enemy percentages, make sure they add to 100
     public static int slowPercentage = 45;
 
@@ -212,9 +212,10 @@ public static class Globals
 
 
     public static void HardReset(){
+        SCORE = 0;
         MediumReset();
         ResetLives();
-        
+
     }
 
     // Used to save the player's high score after the game ends
