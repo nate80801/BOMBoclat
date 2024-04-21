@@ -4,8 +4,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour 
 {
     [Header("-----------Audio Source-----------")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField] public AudioSource musicSource;
+    [SerializeField] public AudioSource SFXSource;
 
     [Header("-----------Audio Clips-----------")]
     /*
@@ -26,6 +26,11 @@ public class AudioManager : MonoBehaviour
     // starts automatically
     void Start()
     {
+        // From SoundManager.cs in the main menu scene,
+        // There will ALWAYS be a key in PlayerPrefs for musicVolume and sfx Volume
+        musicSource.volume = PlayerPrefs.GetFloat("musicVolume");
+        SFXSource.volume = PlayerPrefs.GetFloat("sfxVolume");
+
         Globals.AudioManagerObject = gameObject;
         // DontDestroyOnLoad(gameObject);
         // FIX: make sure audio loops
