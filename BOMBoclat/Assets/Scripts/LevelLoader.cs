@@ -29,6 +29,7 @@ public class LevelLoader : MonoBehaviour
     {
         StartCoroutine(LoadLevel(sceneName));
     }
+
     
     IEnumerator LoadLevel(string sceneName)
     {
@@ -40,6 +41,9 @@ public class LevelLoader : MonoBehaviour
 
         // loads scene
         SceneManager.LoadScene(sceneName);
+        if(sceneName == "Level 1"){
+            Globals.HardReset();
+        }
     }
 
 }

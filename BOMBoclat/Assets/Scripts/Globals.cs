@@ -74,10 +74,10 @@ public static class Globals
     public static int blast_range = 1;
 
     // Default player stats
-    private static int DEFAULT_LIVES = player_lives;
-    private static float DEFAULT_SPEED = player_speed;
-    private static int DEFAULT_COUNT = current_bomb_count;
-    private static int DEFAULT_RANGE = blast_range;
+    private static int DEFAULT_LIVES = 3;
+    private static float DEFAULT_SPEED = 3f;
+    private static int DEFAULT_COUNT = 1;
+    private static int DEFAULT_RANGE = 1;
 
 
     public static string VectorToString(Vector3 vector){
@@ -128,10 +128,13 @@ public static class Globals
     
     public static int Level = 1;
     public static void StartGame(){ // Call this from main menu or restart button, basically level 1
-        Level = 1;
+        
         
         // fades to level 1 scene
         levelLoader.LoadNextLevel("Level 1");
+        HardReset();
+        Level = 1;
+        SCORE = 0;
 
         // plays level 1 audio
         if(Level_1 != null && Level == 1)
@@ -140,7 +143,6 @@ public static class Globals
         }
         
         // Load in level 0 with initial stats
-        HardReset();
         // SceneManager.LoadScene("Level 0");
         // Level = 1;
     }

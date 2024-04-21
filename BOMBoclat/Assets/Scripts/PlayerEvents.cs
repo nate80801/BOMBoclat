@@ -53,6 +53,7 @@ public class PlayerEvents : MonoBehaviour
             Globals.IncreaseScore(10);
         }
         else if(col.gameObject.tag == "ExitDoor"){
+            isInvincible = true; // Don't need to revert bc player will be destroyed shortly after
 
             // plays exit door audio
             audioManager.PlaySFX(audioManager.Exit_Door);
