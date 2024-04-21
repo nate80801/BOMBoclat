@@ -212,7 +212,6 @@ public static class Globals
 
 
     public static void HardReset(){
-        SCORE = 0;
         MediumReset();
         ResetLives();
 

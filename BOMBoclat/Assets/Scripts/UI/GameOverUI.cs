@@ -19,5 +19,7 @@ public class GameOverUI : MonoBehaviour
 
         highScoreText = highScore.GetComponent<TextMeshProUGUI>();
         highScoreText.text = "High Score: " + PlayerPrefs.GetInt("highScore");
+        Globals.SCORE = 0;
+
     }
 }
