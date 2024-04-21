@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    
     public static bool isPaused;
     public GameObject pauseMenu;
+
+    public GameObject mainPause; //Resume, Options, Restart, Main Menu
+    public GameObject optionsPause; // Volume sliders
     void Start(){
         pauseMenu.SetActive(false);
     }
@@ -53,6 +57,16 @@ public class PauseMenu : MonoBehaviour
         if(levelLoader != null) levelLoader.GetComponent<LevelLoader>().LoadNextLevel("MainMenu");
         else SceneManager.LoadScene("MainMenu");
 
+    }
+
+    public void Options(){
+        mainPause.SetActive(false);
+        optionsPause.SetActive(true);
+    }
+
+    public void Back(){
+        optionsPause.SetActive(false);
+        mainPause.SetActive(true);
     }
 }
 
