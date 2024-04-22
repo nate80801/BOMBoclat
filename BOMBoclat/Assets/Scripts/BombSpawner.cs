@@ -22,7 +22,7 @@ public class BombSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(PauseMenu.isPaused) return;
         if((Input.GetKeyDown(ATTACK_KEY)) && (Globals.current_bomb_count > 0)) {
             PlaceBomb(); 
             Debug.Log(Globals.current_bomb_count);
